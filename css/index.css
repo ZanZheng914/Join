@@ -3,6 +3,7 @@
 }
 .navbar {
     background-color: #FFEBCD;
+    position: relative;
 }
 
 .carousel-item>a>img{
@@ -11,9 +12,14 @@
     object-fit: contain;
 }
 body{
-    background-color: #FFF8DC;
+    background-image: url(../圖片素材/cappuccinos.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
-
 .index-card{
- height: 100%;   
+ height: 100%;
+}
+h3{
+    color: white;
 }
