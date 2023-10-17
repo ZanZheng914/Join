@@ -1,0 +1,19 @@
+.nav-item-padding{
+    padding: 15px;
+}
+.navbar {
+    background-color: #FFEBCD;
+}
+
+.carousel-item>a>img{
+    width: 75%;
+    height: 380px;
+    object-fit: contain;
+}
+body{
+    background-color: #FFF8DC;
+}
+
+.index-card{
+ height: 100%;   
+}
