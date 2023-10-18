@@ -12,3 +12,61 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+.container-groupbuying{
+    text-align: center;
+    max-width: 1000px;
+    margin: 5px auto;
+    font-size: 20px;
+}
+.container-groupbuying .row{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.container-groupbuying .col-4,
+.container-groupbuying .col-8{
+    border: 1px black solid;
+    padding: 10px;
+    border-radius: 10px ;
+    margin: 0 5px;
+    background-color: white;
+}
+.dropbtn1{
+    background-color: darksalmon;
+    color: black;
+    padding: 5px;
+    font-size: 24px;
+    border: none;
+}
+
+.dropdown-content1{
+    display: none;
+    background-color:cornsilk;
+}
+.dropdown-content1 a {
+    color: blue;
+    display: block;
+    border: 1px solid black;
+}
+.dropdown-content1 a:hover{background-color: antiquewhite;}
+.dropdown-content1.show{display: block;}
+
+.dropbtn2{
+    background-color: darksalmon;
+    color: black;
+    padding: 5px;
+    font-size: 24px;
+    border: none;
+}
+
+.dropdown-content2{
+    display: none;
+    background-color:cornsilk;
+}
+.dropdown-content2 a {
+    color: blue;
+    display: block;
+    border: 1px solid black;
+}
+.dropdown-content2 a:hover{background-color: antiquewhite;}
+.dropdown-content2.show{display: block;}

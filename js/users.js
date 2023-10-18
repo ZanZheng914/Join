@@ -1,7 +1,7 @@
 var user_A={
-    companyName:"台GG",
-    department:"阿滴",
-    nickname:"多拉欸夢",
+    companyName:"台GG-台中廠",
+    department:"R滴",
+    nickname:"馬斯克",
 };  
 
 document.getElementById("companyName").textContent=user_A.companyName;
