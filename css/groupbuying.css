@@ -35,7 +35,7 @@ body{
     background-color: darksalmon;
     color: black;
     padding: 5px;
-    font-size: 24px;
+    font-size: 20px;
     border: none;
 }
 
@@ -45,7 +45,7 @@ body{
 }
 .dropdown-content1 a {
     color: blue;
-    display: block;
+    display: block; 
     border: 1px solid black;
 }
 .dropdown-content1 a:hover{background-color: antiquewhite;}
@@ -55,7 +55,7 @@ body{
     background-color: darksalmon;
     color: black;
     padding: 5px;
-    font-size: 24px;
+    font-size: 20px;
     border: none;
 }
 
@@ -70,3 +70,24 @@ body{
 }
 .dropdown-content2 a:hover{background-color: antiquewhite;}
 .dropdown-content2.show{display: block;}
+
+/* 截止時間跟飲料店的分隔 */
+.dropbtn3{
+    background-color:cornflowerblue;
+    color: black;
+    padding: 5px;
+    font-size: 20px;
+    border: none;
+}
+
+.dropdown-content3{
+    display: none;
+    background-color:lightblue;
+}
+.dropdown-content3 a {
+    color: black;
+    display: block;
+    border: 1px solid black;
+}
+.dropdown-content3 a:hover{background-color: antiquewhite;}
+.dropdown-content3.show{display: block;}

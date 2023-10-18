@@ -40,8 +40,10 @@
         </nav>
       </div>
     <br>
-        <h1 style="text-align: center;color: white;margin: 8px 0 px;">我要揪團</h1>
-    <div class="container-groupbuying">
+    <!-- 網頁標題頁 -->
+        <h1 style="text-align: center;color: white;margin: -8px 0px;">我要揪團</h1>
+    <!-- 網頁功能頁 -->
+    <div class="container-groupbuying" style="margin-top: 10px;">
         <div class="row">
             <div class="col-8">
                 <p>揪團說明:選擇時間及店家，截止時累積點餐金額達$150元即可成單</p>
@@ -56,9 +58,9 @@
                 <div class="dropdown1">
                     <button onclick="toggleDropdown1()" class="dropbtn1" id="dropdownButton1">點選送餐日期</button>
                     <div id="myDropdown1" class="dropdown-content1">
-                        <a href="#" onclick="selectOption1('今天')">今天</a>
-                        <a href="#" onclick="selectOption1('明天')">明天</a>
-                        <a href="#" onclick="selectOption1('後天')">後天</a>
+                        <a href="#" onclick="selectOption1('今天')"><p id="today"></p></a>
+                        <a href="#" onclick="selectOption1('明天')"><p id="tomorrow"></p></a>
+                        <a href="#" onclick="selectOption1('後天')"><p id="dayAfterTomorrow"></p></a>
                     </div>
                 </div>
             </div>
@@ -67,24 +69,38 @@
                     <div class="dropdown2">
                     <button onclick="toggleDropdown2()" class="dropbtn2" id="dropdownButton2">點選截止日期</button>
                     <div id="myDropdown2" class="dropdown-content2">
-                        <a href="#" onclick="selectOption2('今天')">今天</a>
-                        <a href="#" onclick="selectOption2('明天')">明天</a>
-                        <a href="#" onclick="selectOption2('後天')">後天</a>
+                        <a href="#" onclick="selectOption2('今天')"><p id="today2"></p></a>
+                        <a href="#" onclick="selectOption2('明天')"><p id="tomorrow2"></p></a>
+                        <a href="#" onclick="selectOption2('後天')"><p id="dayAfterTomorrow2"></p></a>
                     </div>
                  </div>
-            </div>           
+                </div>           
+            </div>
         </div>
-        <div class="row">
-            <div class="col-8">選擇店家(Click dropdown店家)</div>
-        </div>
-        <div class="row">
-            <div class="col-8"><p>希望送達日期[08:00-24:00]
-                <div>clickdown</div>
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-8">
+                <div class="dropdown3">
+                    <div class="dropdown3">
+                    <button onclick="toggleDropdown3()" class="dropbtn3" id="dropdownButton3">請選擇店家</button>
+                    <div id="myDropdown3" class="dropdown-content3">
+                        <a href="#" onclick="selectOption3('八八喝茶台中店')">八八喝茶台中店</a>
+                        <a href="#" onclick="selectOption3('壹咖啡台中店')">壹咖啡台中店</a>
+                        <a href="#" onclick="selectOption3('大碗子台中店')">大碗子台中店</a>
+                        <a href="#" onclick="selectOption3('一木日台中店')">一木日台中店</a>
+                        <a href="#" onclick="selectOption3('50收台中店')">50收台中店</a>
+                    </div>
+                 </div>
+                </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-8"><p>送餐地址</p>
-                <div class="">請輸入地址(click dropdown)</div>
+            <div class="col-8">
+                希望送達時間[08:00-24:00]
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">送餐地址
+                <div class="">請輸入地址(input?)</div>
             </div>            
         </div>
     </div>
