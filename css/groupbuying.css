@@ -6,21 +6,9 @@
     position: relative;
 }
 
-.carousel-item>a>img{
-    width: 75%;
-    height: 380px;
-    object-fit: contain;
-}
 body{
     background-image: url(../圖片素材/cappuccinos.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-}
-.index-card{
- height: 100%;
-
-}
-h3{
-    color: white;
 }
