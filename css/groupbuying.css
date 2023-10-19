@@ -7,10 +7,10 @@
 }
 
 body{
-    background-image: url(../圖片素材/cappuccinos.jpg);
-    background-size: cover;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2)), url(../圖片素材/cappuccinos.jpg);    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    font-size: 26px;
 }
 .container-groupbuying{
     text-align: center;
@@ -115,4 +115,11 @@ body{
 .address input{
     width: 75%;
     box-sizing: border-box;
+}
+.submitbtn{
+    background-color:cornflowerblue;
+    color: black;
+    padding: 5px;
+    font-size: 20px;
+    border: none;
 }

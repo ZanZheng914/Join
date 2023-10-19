@@ -11,7 +11,7 @@ document.getElementById("dayAfterTomorrow").textContent = `後天 ${dayAfterTomo
 // 設定參數2
 const today2 = new Date();
 const tomorrow2 = new Date();
-tomorrow.setDate(today2.getDate()+1);
+tomorrow2.setDate(today2.getDate()+1);
 const dayAfterTomorrow2 = new Date();
 dayAfterTomorrow2.setDate(today2.getDate()+2);
 
@@ -25,7 +25,8 @@ function toggleDropdown1(){
     dropdown1.classList.toggle("show");
 }
 function selectOption1(option){
-    document.getElementById("dropdownButton1").textContent =option;
+    var x =     document.getElementById(option).innerText;
+    dropdownButton1.innerText = x;
     var dropdown1 = document.getElementById("myDropdown1");
     dropdown1.classList.remove("show");
 }
@@ -35,7 +36,8 @@ function toggleDropdown2(){
     dropdown2.classList.toggle("show");
 }
 function selectOption2(option){
-    document.getElementById("dropdownButton2").textContent =option;
+    var y =     document.getElementById(option).innerText;
+    dropdownButton2.innerText = y;
     var dropdown2 = document.getElementById("myDropdown2");
     dropdown2.classList.remove("show");
 }

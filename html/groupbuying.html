@@ -58,9 +58,9 @@
                 <div class="dropdown1">
                     <button onclick="toggleDropdown1()" class="dropbtn1" id="dropdownButton1">點選送餐日期</button>
                     <div id="myDropdown1" class="dropdown-content1">
-                        <a href="#" onclick="selectOption1('今天')"><p id="today"></p></a>
-                        <a href="#" onclick="selectOption1('明天')"><p id="tomorrow"></p></a>
-                        <a href="#" onclick="selectOption1('後天')"><p id="dayAfterTomorrow"></p></a>
+                        <a onclick="selectOption1('today')"><p id="today"></p></a>
+                        <a onclick="selectOption1('tomorrow')"><p id="tomorrow"></p></a>
+                        <a onclick="selectOption1('dayAfterTomorrow')"><p id="dayAfterTomorrow"></p></a>
                     </div>
                 </div>
             </div>
@@ -69,9 +69,9 @@
                     <div class="dropdown2">
                     <button onclick="toggleDropdown2()" class="dropbtn2" id="dropdownButton2">點選截止日期</button>
                     <div id="myDropdown2" class="dropdown-content2">
-                        <a href="#" onclick="selectOption2('今天')"><p id="today2"></p></a>
-                        <a href="#" onclick="selectOption2('明天')"><p id="tomorrow2"></p></a>
-                        <a href="#" onclick="selectOption2('後天')"><p id="dayAfterTomorrow2"></p></a>
+                        <a onclick="selectOption2('today2')"><p id="today2"></p></a>
+                        <a onclick="selectOption2('tomorrow2')"><p id="tomorrow2"></p></a>
+                        <a onclick="selectOption2('dayAfterTomorrow2')"><p id="dayAfterTomorrow2"></p></a>
                     </div>
                  </div>
                 </div>           
@@ -94,7 +94,7 @@
         <div class="row">
             <div class="col-8">
                 <div class="dropdownt">
-                    <button onclick="toggleDropdownt()" class="dropbtnt" id="dropdownButtont">請選擇時間</button>
+                    <button onclick="toggleDropdownt()" class="dropbtnt" id="dropdownButtont">希望送達時間</button>
                     <div id="myDropdownt" class="dropdown-contentt">
                         <a id="time1" onclick="selectOptiont('09:00-11:00')">09:00-11:00</a>
                         <a id="time2" onclick="selectOptiont('11:00-13:00')">11:00-13:00</a>
@@ -114,6 +114,12 @@
                     </div>
                 </div>            
         </div>
+        <div class="row">
+            <div class="col-8" id="submitbtn">
+                <button class="submitbtn">Submit</button>
+            </div>
+        </div>
+
     </div>
 
 
