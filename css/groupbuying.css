@@ -91,3 +91,28 @@ body{
 }
 .dropdown-content3 a:hover{background-color: antiquewhite;}
 .dropdown-content3.show{display: block;}
+/* 時間在下面 */
+.dropbtnt{
+    background-color:cornflowerblue;
+    color: black;
+    padding: 5px;
+    font-size: 20px;
+    border: none;
+}
+
+.dropdown-contentt{
+    display: none;
+    background-color:lightblue;
+}
+.dropdown-contentt a {
+    color: black;
+    display: block;
+    border: 1px solid black;
+}
+.dropdown-contentt a:hover{background-color: antiquewhite;}
+.dropdown-contentt.show{display: block;}
+/* 處理地址的input */
+.address input{
+    width: 75%;
+    box-sizing: border-box;
+}

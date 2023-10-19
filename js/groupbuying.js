@@ -19,7 +19,7 @@ document.getElementById("today2").textContent = `今天 ${today2.toDateString()}
 document.getElementById("tomorrow2").textContent = `明天 ${tomorrow2.toDateString()}`;
 document.getElementById("dayAfterTomorrow2").textContent = `後天 ${dayAfterTomorrow2.toDateString()}`;
 
-//
+//設定送餐日期的function
 function toggleDropdown1(){
     var dropdown1 = document.getElementById("myDropdown1");
     dropdown1.classList.toggle("show");
@@ -29,7 +29,7 @@ function selectOption1(option){
     var dropdown1 = document.getElementById("myDropdown1");
     dropdown1.classList.remove("show");
 }
-
+//設定截止日期的function
 function toggleDropdown2(){
     var dropdown2 = document.getElementById("myDropdown2");
     dropdown2.classList.toggle("show");
@@ -39,6 +39,7 @@ function selectOption2(option){
     var dropdown2 = document.getElementById("myDropdown2");
     dropdown2.classList.remove("show");
 }
+// 設定店家參數
 function toggleDropdown3(){
     var dropdown3 = document.getElementById("myDropdown3");
     dropdown3.classList.toggle("show");
@@ -47,4 +48,14 @@ function selectOption3(option){
     document.getElementById("dropdownButton3").textContent =option;
     var dropdown3 = document.getElementById("myDropdown3");
     dropdown3.classList.remove("show");
+}
+// 設定送餐時間參數
+function toggleDropdownt(){
+    var dropdownt = document.getElementById("myDropdownt");
+    dropdownt.classList.toggle("show");
+}
+function selectOptiont(option){
+    document.getElementById("dropdownButtont").textContent =option;
+    var dropdownt = document.getElementById("myDropdownt");
+    dropdownt.classList.remove("show");
 }
