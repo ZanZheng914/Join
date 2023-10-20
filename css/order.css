@@ -1,0 +1,15 @@
+.nav-item-padding{
+    padding: 15px;
+}
+.navbar {
+    background-color: #FFEBCD;
+    position: relative;
+}
+
+body{
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2)), url(../圖片素材/cappuccinos.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-size: 26px;
+}
