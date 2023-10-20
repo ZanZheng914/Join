@@ -18,5 +18,10 @@ body{
     font-size: 26px;
 }
 h3{
-    color: white;
+    /* text-align: center; */
+    font-size: 32px;
+    color:black;
+    background-color: white;
+    margin-top: 15px;
+    display: inline-block;
 }
