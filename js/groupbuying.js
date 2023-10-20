@@ -61,3 +61,14 @@ function selectOptiont(option){
     var dropdownt = document.getElementById("myDropdownt");
     dropdownt.classList.remove("show");
 }
+//設定送出按鈕 利用jQuery
+$(document).ready(function(){
+    $(".submitbtn").on("click",function(){
+        var yes = confirm("您已送出！\n\n點餐去？");
+        if (yes){
+            window.location.href="index.html";
+        } else{
+            
+        }
+    })
+})
