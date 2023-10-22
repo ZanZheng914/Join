@@ -13,3 +13,20 @@ body{
     background-attachment: fixed;
     font-size: 26px;
 }
+.container-booking .row{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.container-booking .col-4,
+.container-booking .col-2,
+.container-booking .col-6{
+    border: 1px black solid;
+    padding: 5px;
+    border-radius: 10px ;
+    margin: 0 5px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

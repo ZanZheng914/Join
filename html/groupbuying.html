@@ -32,16 +32,16 @@
             </ul>
             <ul class="nav navbar-nav" style="margin-right: 30px;font-size: 24px;margin-top: 20px;">
               <span style="font-size: 20px;">
-                  <li class="nav-item"><a class="nav-link" id="companyName"></a></li>
-                  <li class="nav-item"><a class="nav-link" id="department"></a></li>
-                  <li class="nav-item"><a class="nav-link" id="nickname"></a></li>
+                <li class="nav-item"><a class="nav-link" >台GG-台中廠</a></li>
+                <li class="nav-item"><a class="nav-link" >R滴</a></li>
+                <li class="nav-item"><a class="nav-link" >馬斯克</a></li>
               </span>
             </ul>
           </div>
         </nav>
       </div>
     <br>
-    <!-- 網頁標題頁 -->
+    <!-- 網頁標題欄 -->
         <h1 style="text-align: center;color: white;">我要揪團</h1>
     <!-- 網頁功能頁 -->
     <div class="container-groupbuying" style="margin-top: 10px;">
@@ -50,13 +50,13 @@
                 <p>揪團說明:選擇時間及店家，截止時累積點餐金額達$150元即可成單</p>
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-4">送餐日期</div>
             <div class="col-4">截止日期</div>
-        </div>
+        </div> -->
         <div class="row">
             <div class="col-4">
-                <div class="dropdown1">
+                <div class="dropdown1"><p>點選送餐日期</p>
                     <button onclick="toggleDropdown1()" class="dropbtn1" id="dropdownButton1">點選送餐日期</button>
                     <div id="myDropdown1" class="dropdown-content1">
                         <a onclick="selectOption1('today')"><p id="today"></p></a>
@@ -67,7 +67,7 @@
             </div>
             <div class="col-4">
                 <div class="dropdown2">
-                    <div class="dropdown2">
+                    <div class="dropdown2"><p>點選截止日期</p>
                     <button onclick="toggleDropdown2()" class="dropbtn2" id="dropdownButton2">點選截止日期</button>
                     <div id="myDropdown2" class="dropdown-content2">
                         <a onclick="selectOption2('today2')"><p id="today2"></p></a>
@@ -94,7 +94,7 @@
         </div>
         <div class="row">
             <div class="col-8">
-                <div class="dropdownt">
+                <div class="dropdownt"><p>希望送達時間</p>
                     <button onclick="toggleDropdownt()" class="dropbtnt" id="dropdownButtont">希望送達時間</button>
                     <div id="myDropdownt" class="dropdown-contentt">
                         <a id="time1" onclick="selectOptiont('09:00-11:00')">09:00-11:00</a>

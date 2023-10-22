@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>飲料店菜單</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>選擇店家和品項</h1>
+        <div class="form-group">
+            <label for="shopSelect">選擇店家：</label>
+            <select class="form-control" id="shopSelect">
+                <option value="shop1">店家1</option>
+                <option value="shop2">店家2</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="itemSelect">選擇品項：</label>
+            <select class="form-control" id="itemSelect"></select>
+        </div>
+        <div class="form-group">
+            <label for="iceSelect">選擇冰量：</label>
+            <select class="form-control" id="iceSelect"></select>
+        </div>
+        <h3>價格：<span id="price"></span>元</h3>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../js/demo_menu.js"></script>
+</body>
+</html>
