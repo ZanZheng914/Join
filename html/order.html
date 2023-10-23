@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/order.css">
     <link rel="stylesheet" href="../css/shops.css">
-
     <title>Join揪飲 - 我要點餐</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="../js/menu.js"> </script>
 
 </head>
 <body>
@@ -68,18 +66,19 @@
     </div>
     <div class="row col-10 mx-auto">
       <div class="col-4">送餐日期
-        <select class="date-select"id="deleveryDate">
+        <select class="date-select"id="deliveryDate">
           <option selected>請點選送餐日期</option>
-          <option id="deleveryToday3" value='today3'></option>
-          <option id="deleveryTomorrow3" value='tomorrow3'></option>
-          <option id="deleverydayAfterTomorrow3" value="dayAfterTomorrow3"></option>
+          <option id="deliveryToday3" value='today3'>今天</option>
+          <option id="deliveryTomorrow3" value='tomorrow3'>明天</option>
+          <option id="deliverydayAfterTomorrow3" value="dayAfterTomorrow3">後天</option>
         </select>  
       </div>
-      <div class="col-4" >希望送達時間
-        (id= time1~time6)
+      <div class="col-4">希望送達時間： &#20;
+        <p id="deliveryTimeDisplay"></p>
       </div>
       <div class="col-2">
-        揪團店家
+        揪團店家：&#20;
+        <p id="shopName"></p>
       </div>
     </div>
   </div>
@@ -87,11 +86,18 @@
   <div class="container-shop1" style="margin-top: 10px;">
       <div class="row">
           <div class="col-11">
-              <img src="../圖片素材/menu-2023八曜.jpeg" width="100%">
+            <img src="" width="100%">
+              <!-- <img src="../圖片素材/menu-2023八曜.jpeg" width="100%"> -->
           </div>
     </div>
   </div>  
-
+<!-- 購物車 -->
+<div class="container-shop1" style="margin-top: 10px;">
+  <div class="row">
+      <div class="col-11">購物車
+      </div>
+</div>
+</div>  
 
 
 <script>
