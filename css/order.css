@@ -21,6 +21,7 @@ body{
 .container-booking .col-4,
 .container-booking .col-2,
 .container-booking .col-6{
+    font-size: large;
     border: 1px black solid;
     padding: 5px;
     border-radius: 10px ;
@@ -29,4 +30,11 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.container-booking .userInfo{
+    flex-direction: column;
+}
+.container-booking p{
+    margin: -7px;
 }

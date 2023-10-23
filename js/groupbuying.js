@@ -8,6 +8,7 @@ dayAfterTomorrow.setDate(today.getDate()+2);
 document.getElementById("today").textContent = `今天 ${today.toDateString()}`;
 document.getElementById("tomorrow").textContent = `明天 ${tomorrow.toDateString()}`;
 document.getElementById("dayAfterTomorrow").textContent = `後天 ${dayAfterTomorrow.toDateString()}`;
+
 // 設定參數2
 const today2 = new Date();
 const tomorrow2 = new Date();
@@ -51,24 +52,36 @@ function selectOption3(option){
     var dropdown3 = document.getElementById("myDropdown3");
     dropdown3.classList.remove("show");
 }
+
+//設定送出按鈕 利用jQuery
+$(document).ready(function(){
+    $(".submitbtn").on("click",function(){
+        var yes = confirm("您已送出！\n\n點餐去？");
+        if (yes){
+            window.location.href="order.html";
+        } else{
+            
+        }
+    })
+})
+
+var deliveryTimes = {
+    "time1": "09:00-11:00",
+    "time2": "11:00-13:00",
+    "time3": "13:00-15:00",
+    "time4": "15:00-17:00",
+    "time5": "17:00-19:00",
+    "time6": "19:00-21:00"
+};
 // 設定送餐時間參數
 function toggleDropdownt(){
     var dropdownt = document.getElementById("myDropdownt");
     dropdownt.classList.toggle("show");
 }
 function selectOptiont(option){
-    document.getElementById("dropdownButtont").textContent =option;
+    var selectedTime = deliveryTimes[option];
+    document.getElementById("dropdownButtont").textContent = selectedTime;
     var dropdownt = document.getElementById("myDropdownt");
     dropdownt.classList.remove("show");
 }
-//設定送出按鈕 利用jQuery
-$(document).ready(function(){
-    $(".submitbtn").on("click",function(){
-        var yes = confirm("您已送出！\n\n點餐去？");
-        if (yes){
-            window.location.href="index.html";
-        } else{
-            
-        }
-    })
-})
+

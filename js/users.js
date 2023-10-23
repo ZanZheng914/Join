@@ -44,10 +44,3 @@ $(document).ready(function(){
     }
   });
 });
-
-// document.getElementById("user_A_companyName").textContent=user.user_A.companyName
-// document.getElementById("user_A_department").textContent=user.user_A.department;
-// document.getElementById("user_A_nickname").textContent=user.user_A.nickname;
-// document.getElementById("user_B_department").textContent=user.user_B.department;
-// document.getElementById("user_B_nickname").textContent=user.user_B.nickname;
-// document.getElementById("user_B_tel").textContent=user.user_B.tel;

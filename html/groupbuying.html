@@ -68,13 +68,13 @@
             <div class="col-4">
                 <div class="dropdown2">
                     <div class="dropdown2"><p>點選截止日期</p>
-                    <button onclick="toggleDropdown2()" class="dropbtn2" id="dropdownButton2">點選截止日期</button>
-                    <div id="myDropdown2" class="dropdown-content2">
+                     <button onclick="toggleDropdown2()" class="dropbtn2" id="dropdownButton2">點選截止日期</button>
+                     <div id="myDropdown2" class="dropdown-content2">
                         <a onclick="selectOption2('today2')"><p id="today2"></p></a>
                         <a onclick="selectOption2('tomorrow2')"><p id="tomorrow2"></p></a>
                         <a onclick="selectOption2('dayAfterTomorrow2')"><p id="dayAfterTomorrow2"></p></a>
+                     </div>
                     </div>
-                 </div>
                 </div>           
             </div>
         </div>
@@ -94,15 +94,18 @@
         </div>
         <div class="row">
             <div class="col-8">
-                <div class="dropdownt"><p>希望送達時間</p>
+                <div class="dropdownt">
                     <button onclick="toggleDropdownt()" class="dropbtnt" id="dropdownButtont">希望送達時間</button>
-                    <div id="myDropdownt" class="dropdown-contentt">
-                        <a id="time1" onclick="selectOptiont('09:00-11:00')">09:00-11:00</a>
-                        <a id="time2" onclick="selectOptiont('11:00-13:00')">11:00-13:00</a>
-                        <a id="time3" onclick="selectOptiont('13:00-15:00')">13:00-15:00</a>
-                        <a id="time4" onclick="selectOptiont('15:00-17:00')">15:00-17:00</a>
-                        <a id="time5" onclick="selectOptiont('17:00-19:00')">17:00-19:00</a>
-                        <a id="time6" onclick="selectOptiont('19:00-21:00')">19:00-21:00</a>
+                    <div id="myDropdownt" class="dropdownt-content">
+                        <select class="user-select">
+                            <option selected value="time0">請選擇時間</option>
+                            <option value="time1">09:00-11:00</option>
+                            <option value="time2">11:00-13:00</option>
+                            <option value="time3">13:00-15:00</option>
+                            <option value="time4">15:00-17:00</option>
+                            <option value="time5">17:00-19:00</option>
+                            <option value="time6">19:00-21:00</option>
+                        </select>
                     </div>
                 </div>
             </div>
