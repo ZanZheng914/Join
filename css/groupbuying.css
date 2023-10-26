@@ -29,14 +29,16 @@ body{
     padding: 10px;
     border-radius: 10px ;
     margin: 0 5px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 24px;
 }
 .dropbtn1{
     background-color: darksalmon;
     color: black;
-    padding: 5px;
-    font-size: 20px;
+    padding: 3px;
+    font-size: 22px;
     border: none;
+    border-radius: 5px;
 }
 
 .dropdown-content1{
@@ -54,9 +56,10 @@ body{
 .dropbtn2{
     background-color: darksalmon;
     color: black;
-    padding: 5px;
-    font-size: 20px;
+    padding: 3px;
+    font-size: 22px;
     border: none;
+    border-radius: 5px;
 }
 
 .dropdown-content2{
@@ -76,8 +79,9 @@ body{
     background-color:cornflowerblue;
     color: black;
     padding: 5px;
-    font-size: 20px;
+    font-size: 22px;
     border: none;
+    border-radius: 5px;
 }
 
 .dropdown-content3{
@@ -96,8 +100,9 @@ body{
     background-color:cornflowerblue;
     color: black;
     padding: 5px;
-    font-size: 20px;
+    font-size: 22px;
     border: none;
+    border-radius: 5px;
 }
 
 .dropdownt-content a {
@@ -114,6 +119,9 @@ body{
     background-color:cornflowerblue;
     color: black;
     padding: 5px;
-    font-size: 20px;
+    font-size: 35px;
     border: none;
+    width: 150px;
+    height: 60px;
+    border-radius: 10px;
 }

@@ -19,18 +19,24 @@ var deliveryTimes = {
     var deliveryDateSelect = document.getElementById('deliveryDate');
     var deliveryTimeDisplay = document.getElementById('deliveryTimeDisplay');
     var shopNameElement = document.getElementById('shopName');
-    var menuImageElement = document.querySelector('.container-shop1 img');    
+    var menuImageElement = document.querySelector('.container-shop1 img');   
+    var tableSection = document.querySelector('.tableSection');
+ 
 
     deliveryDateSelect.addEventListener('change',function(){
     var selectedDate = deliveryDateSelect.value;
     //如果日期選到today, 那就給我time2
         if (selectedDate === 'today3'){
+            tableSection.style.display = 'table';
         displayDeliveryTime('time2');
         }else if (selectedDate === 'tomorrow3'){
+            tableSection.style.display = 'none';
             displayDeliveryTime('time3');
         }else if (selectedDate === 'dayAfterTomorrow3'){
+            tableSection.style.display = 'none';
             displayDeliveryTime('time4');
         }else{
+            tableSection.style.display = 'none';
             clearDeliveryTime();
         }
 

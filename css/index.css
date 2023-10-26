@@ -21,7 +21,7 @@ h3{
     /* text-align: center; */
     font-size: 32px;
     color:black;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.5);
     margin-top: 15px;
     display: inline-block;
 }
