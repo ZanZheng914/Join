@@ -35,3 +35,11 @@ body{
     margin: 0 5px;
     background-color: white;
 }
+.container-shop1 .col-9{
+    border: 1px black solid;
+    padding: 10px;
+    border-radius: 10px ;
+    margin: 0 5px;
+    background-color: white;
+    margin-right: 150px;
+}

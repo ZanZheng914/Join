@@ -98,3 +98,66 @@ var eighttea = {
             {"name":"神仙奶茶","price":65},
         ]
     }
+    var cart = [];
+
+
+    $('.add-to-cart').click(function(){
+        var name = $(this).data('name');
+        var price = $(this).data('price');
+        var quantity = parseInt($(this).closest('tr').find('.quantity').val());
+        var ice = $(this).closest('tr').find('.ice').val();
+        var sugar = $(this).closest('tr').find('.sugar').val();
+    
+        if(quantity > 0){
+            var item = {
+                name: name,
+                price: price,
+                ice: ice,
+                sugar: sugar,
+                quantity: quantity,
+                total: price * quantity
+            };
+            cart.push(item);
+            updateCart();
+        } else {
+            alert("請輸入正確的數量");
+        };
+
+    $('#cleancart').click(function(){
+        cart = [];
+        updateCart();
+    });
+});
+    
+    function updateCart(){
+        var totalItems = 0;
+        var totalPrice = 0;
+        $('.table').empty();
+
+        var header = '<div class="column">';
+        header += '<div class="col1-name">品名</div>';
+        header += '<div class="col2-price">價格</div>';
+        header += '<div class="col3-ice">冰塊</div>';
+        header += '<div class="col4-sugar">糖量</div>';
+        header += '<div class="col5-quantity">數量</div>';
+        header += '</div>';
+        $('.table').append(header);
+    
+        cart.forEach(function(item){
+            totalItems += item.quantity;
+            totalPrice += item.price * item.quantity;
+            
+            var column = '<div class="column">';
+            column += '<div class="col1-name">' + item.name + '</div>';
+            column += '<div class="col2-price">$' + item.price + '</div>';
+            column += '<div class="col3-ice">' + item.ice + '</div>';
+            column += '<div class="col4-sugar">' + item.sugar + '</div>';
+            column += '<div class="col5-quantity">' + item.quantity + '</div>';
+            column += '</div>';
+            $('.table').append(column);
+            $('.table').append('<br>');
+        });
+    
+        $('#count-item').text(totalItems + ' item');
+        $('#total-price').text(totalPrice);
+    }   
