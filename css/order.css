@@ -139,6 +139,10 @@ body{
     width: 95%;
     justify-content: center;
   }
+  .tableSection2{
+    width: 95%;
+    justify-content: center;
+  }
 
   .container-shop1 .col-9{
     display: flex;

@@ -76,10 +76,10 @@ body{
 
 /* 截止時間跟飲料店的分隔 */
 .dropbtn3{
-    background-color:cornflowerblue;
+    background-color:#6CBEED;
     color: black;
     padding: 5px;
-    font-size: 22px;
+    font-size: 24px;
     border: none;
     border-radius: 5px;
 }
@@ -97,10 +97,10 @@ body{
 .dropdown-content3.show{display: block;}
 /* 時間在下面 */
 .dropbtnt{
-    background-color:cornflowerblue;
+    background-color:#6CBEED;
     color: black;
     padding: 5px;
-    font-size: 22px;
+    font-size: 24px;
     border: none;
     border-radius: 5px;
 }
@@ -116,10 +116,10 @@ body{
     box-sizing: border-box;
 }
 .submitbtn{
-    background-color:cornflowerblue;
+    background-color:#6CBEED;
     color: black;
-    padding: 5px;
-    font-size: 35px;
+    padding: 2px;
+    font-size: 30px;
     border: none;
     width: 150px;
     height: 60px;
