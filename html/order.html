@@ -13,31 +13,22 @@
 </head>
 <body>
     <!-- NavBar -->
-  <div style="margin-top: -26px;">
-        <nav class="navbar navbar-expand-lg" style="height: 150px;">
-            <div class="container-fluid">
-              <div class="navbar-header">
-                <a class="navbar-brand" href="./index.html"><img src="../圖片素材/join_LOGO.png" width="100%" height="200px"></a>
-              </div>
-              <ul class="nav navbar-nav d-flex justify-content-center" style="flex: 1; font-size: 36px;">
+    <div style="margin-top: 0px;">
+      <nav class="navbar navbar-expand-lg" style="height: 100px;">
+          <div class="container-fluid">
+            <div class="navbar-header" style="width: 200px;margin-top: -20px;">
+              <a class="navbar-brand" href="./index.html"><img src="../圖片素材/join_LOGO.png" width="120%" height="120%"></a>
+            </div>
+            <ul class="nav navbar-nav d-flex justify-content-center" style="flex: 1; font-size: 32px;">
                 <li class="nav-item nav-item-padding"><a class="nav-link" href="./shops.html">合作店家</a></li>
                 <li class="nav-item nav-item-padding"><a class="nav-link" href="./groupbuying.html">我要揪團</a></li>
                 <li class="nav-item nav-item-padding"><a class="nav-link" href="./order.html">我要點餐</a></li>
               </ul>
-              <ul class="nav navbar-nav" style="margin-right: 50px;font-size: 24px;margin-top: 20px;">
-                <span style="font-size: 20px;">
-                    <li class="nav-item"><a class="nav-link">公司名稱</a></li>
-                    <li class="nav-item"><a class="nav-link">部門</a></li>
-                    <li class="nav-item"><a class="nav-link">姓名</a></li>
+              <ul class="nav navbar-nav" style="margin-right: 40px;">
+                <span style="font-size: 24px;">
+                    <a href="index.html" class="nav-link">登出</a>
                 </span>
-            </ul>
-            <ul class="nav navbar-nav" style="margin-right: 30px;font-size: 24px;margin-top: 20px;">
-              <span style="font-size: 20px;">
-                <li class="nav-item"><a class="nav-link" >台GG-台中廠</a></li>
-                <li class="nav-item"><a class="nav-link" >R滴</a></li>
-                <li class="nav-item"><a class="nav-link" >馬斯克</a></li>
-            </span>
-            </ul>
+              </ul>
           </div>
         </nav>
   </div>
@@ -47,8 +38,8 @@
 
   <div class="container-booking">
     <div class="row col-10 mx-auto">
-      <div class="col-4">揪團發起人：
-        <select class="user-select">
+      <div class="col-4">1️⃣&nbsp;&nbsp;揪團發起人：
+        <select class="user-select" style="font-size: 26px;">
           <option selected>揪團發起人</option>
           <option value="user_A">馬斯克</option>
           <option value="user_B">皮卡丘</option>
@@ -65,7 +56,7 @@
       </div>
     </div>
     <div class="row col-10 mx-auto">
-      <div class="col-4">送餐日期
+      <div class="col-4">2️⃣&nbsp;&nbsp;送餐日期
         <select class="date-select"id="deliveryDate">
           <option selected>請點選送餐日期</option>
           <option id="deliveryToday3" value='today3'>今天</option>
@@ -94,7 +85,7 @@
 <!-- 購物車 -->
 <div class="container-shop1 " style="margin-top: 10px;">
   <div class="row">
-      <div class="col-9 ">
+      <div class="col-9">
         <table class="tableSection" style="display: none;">
           <thead class="tableTitle">
             <tr>
@@ -442,10 +433,10 @@
     <div class="col5-quantity"></div>
   </div>
   <div>
-    <a class="cart" title="Your Cart">
-      <img src="../圖片素材/cart.png" style="width: 30px;"/>
+    <a class="cart" title="Your Cart" id="cart">
+      <img src="../圖片素材/cart.png" style="width: 50px;height: 50;cursor: pointer;"/>
       <span class="empty" id="count-item" data-count="0">0 item</span>
-    </a><div class="cleancart remove"><span>清除購物車</span><img id="cleancart" src="../圖片素材/delete.png" style="width: 30px;"></div>
+    </a><div class="cleancart remove"><span>清除購物車</span><img id="cleancart" src="../圖片素材/delete.png" style="width: 45px;cursor: pointer;"></div>
   </div>
   <div class="total">
     <div class="total-text">Total：</div>
