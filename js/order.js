@@ -85,7 +85,7 @@ var eighttea = {
     
     var tiktop={
         "shopName": "tiktop",
-        "menuImg": 'https://www.teatop.com.tw/upload/package_menu_m/ALL_package_menu_23J12_G85cKR9F1a.jpg',
+        "menuImg": 'https://www.teatop.com.tw/upload/package_menu_b/ALL_package_menu_23K01_jzD344JnHZ.jpg',
         "menu":[
             {"name":"請選擇一種飲料","price": null},
             {"name":"招牌高山青","price":35},
@@ -170,3 +170,22 @@ var eighttea = {
         $('#count-item').text(totalItems + ' item');
         $('#total-price').text(totalPrice);
     }   
+
+    let CartVisible = false;
+
+document.getElementById('cart').addEventListener('click',function(){
+    const carttable = document.querySelector('.table');
+    const cleancart = document.querySelector('.cleancart');
+    const checkout = document.querySelector('.checkout');
+
+    if(CartVisible){
+        carttable.style.display = 'none';
+        cleancart.style.display = 'none';
+        checkout.style.display = 'none';
+    }else{
+        carttable.style.display = 'block';
+        cleancart.style.display = 'block';
+        checkout.style.display = 'block';
+    }
+    CartVisible = !CartVisible;
+});

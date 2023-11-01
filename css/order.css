@@ -7,8 +7,8 @@
 }
 
 body{
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2)), url(../圖片素材/cappuccinos.jpg);
-    background-size: cover;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3)), url(../圖片素材/cappuccinos.jpg);    background-size: cover;
+  background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-size: 26px;
@@ -22,11 +22,11 @@ body{
 .container-booking .col-2,
 .container-booking .col-6{
     font-size: large;
-    border: 1px black solid;
+    /* border: 1px black solid; */
     padding: 5px;
     border-radius: 10px ;
     margin: 0 5px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,12 +40,9 @@ body{
 }
 /* check out */
 .checkout-container{
-    /* background: rgba(255, 255, 255, 0.75); */
-    width: 400px;
-    height: 500px;
     position: fixed;
     right:0px;
-    bottom: 0px;
+    bottom: 20px;
     text-align: center;
     z-index: 10;
 }
@@ -55,7 +52,7 @@ body{
     overflow-y: scroll;
     border: 1px solid black;
     border-radius: 5px;
-    background:rgba(255, 255, 255, 0.9);
+    background:rgba(255, 255, 255, 1);
     padding: 2%;
 }
 .tableTitle{
@@ -101,7 +98,7 @@ body{
   display: block;
   border: 1px black solid;
   border-radius: 5px;
-
+  margin: 5px 0px;
 }
 
   .total{
@@ -150,4 +147,8 @@ body{
   }
   .container-shop1 input{
     width: 40px;
+  }
+  
+  .table, .cleancart , .checkout{
+    display: none;
   }
