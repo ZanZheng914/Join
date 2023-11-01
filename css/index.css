@@ -25,3 +25,31 @@ h3{
     margin-top: 15px;
     display: inline-block;
 }
+#lottery{
+    width: 25%;
+    height: 25%;
+    position:fixed;
+    bottom: 6%;
+    right: 0%;
+    animation: swing infinite;
+    animation-duration: 2.5s;
+    z-index: 9999;
+    cursor: pointer;
+}
+@keyframes swing { 
+    1% { transform: rotate(15deg); } 
+    2% { transform: rotate(-10deg); } 
+    3% { transform: rotate(5deg); } 
+    4% { transform: rotate(-5deg); } 
+    5% { transform: rotate(0deg); } 
+    100% { transform: rotate(0deg); } 
+ } 
+figcaption{
+    color: white;
+    font-size: 28px;
+    /* text-align: center; */
+    position:fixed;
+    bottom: 28%;
+    right: 9%;
+    font-weight: bolder;
+}
