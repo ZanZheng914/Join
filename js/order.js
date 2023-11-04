@@ -23,7 +23,10 @@ var deliveryTimes = {
     var tableSection = document.querySelector('.tableSection');
     var tableSection2 = document.querySelector('.tableSection2');
 
+    var ordersection = document.querySelector('.container-shop1 .col-9');
+
     deliveryDateSelect.addEventListener('change',function(){
+        ordersection.style.display= 'block';
     var selectedDate = deliveryDateSelect.value;
     //如果日期選到today, 那就給我time2
         if (selectedDate === 'today3'){
@@ -189,3 +192,10 @@ document.getElementById('cart').addEventListener('click',function(){
     }
     CartVisible = !CartVisible;
 });
+
+function checkout(){
+    Swal.fire({
+        icon:'success',
+        title:'訂單已送出！'
+    })
+}

@@ -142,13 +142,13 @@ body{
   }
 
   .container-shop1 .col-9{
-    display: flex;
+    display: none;
     justify-content: space-evenly;
   }
   .container-shop1 input{
     width: 40px;
   }
   
-  .table, .cleancart , .checkout{
+  .table, .cleancart {
     display: none;
   }
