@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CartItem {
+public class CartItems {
 	private Integer cartItemId;
 	private Integer cartId;
 	private Integer menuId;
@@ -22,7 +22,7 @@ public class CartItem {
         return subTotal;
     }
 
-	public void add(CartItem item) {
+	public void add(CartItems item) {
 		// TODO Auto-generated method stub
 		
 	}
