@@ -12,7 +12,7 @@ public class CartItems {
 	private Integer cartId;
 	private Integer menuId;
 	private Integer quantity;
-	private Menu menu;
+	private Product menu;
 	private Integer subTotal;
 	
 	public void calculateSubTotal() {

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Menu {
+public class Product {
 	private Integer id;
 	private Integer shopid;
 	private String product;
