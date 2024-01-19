@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/shops.css">
+    <title>Join揪飲 - 合作店家</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+<br>
+<body>
+    <!-- NAV表頭 -->
+    <div style="margin-top: -24px;">
+      <nav class="navbar navbar-expand-lg" style="height: 100px;">
+          <div class="container-fluid">
+            <div class="navbar-header" style="width: 200px;margin-top: -20px;">
+              <a class="navbar-brand" href="./index.html"><img src="../圖片素材/join_LOGO.png" width="120%" height="120%"></a>
+            </div>
+            <ul class="nav navbar-nav d-flex justify-content-center" style="flex: 1; font-size: 32px;">
+                <li class="nav-item nav-item-padding"><a class="nav-link" href="./shops.html">合作店家</a></li>
+                <li class="nav-item nav-item-padding"><a class="nav-link" href="./groupbuying.html">我要揪團</a></li>
+                <li class="nav-item nav-item-padding"><a class="nav-link" href="./order.html">我要點餐</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right;" style="font-size:24px;">
+                <li class="nav-item"><a class="nav-link" href="./login.html"><span class="bi bi-box-arrow-in-right"></span> 立即登入   </a></li>
+                <li class="nav-item"><a class="nav-link" href="./register.html"><span class="bi bi-person"></span> 免費註冊   </a></li>
+              </ul>
+            </div>
+        </nav>
+    </div>
+</br>
+<h3 class="d-flex justify-content-center" style="font-size: 36px;margin: 5px 0px; color: white;">合作店家</h3>
+<!-- 店家卡片組件 -->
+<br>
+  <div class="container-fluid d-flex justify-content-center">
+    <div class="row col-10 row-cols-1 row-cols-md-4 g-4">
+      <div class="col">
+        <div class="card ">
+          <a href="shop_1.html"><img src="../圖片素材/logo_八耀.png" class="shops card-img-top img-thumbnail shops-card"></a>
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: center;">八八喝茶台中店</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card ">
+          <a href="shop_2.html"><img src="../圖片素材/logo_Starbucks_Coffee.svg.png" class="shops card-img-top img-thumbnail shops-card"></a>
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: center;">壹咖啡台中店</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card ">
+          <a href="shop_3.html"><img src="../圖片素材/logo大苑子.png" class="shops card-img-top img-thumbnail shops-card"></a>
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: center;">大碗子台中店</h5>
+          </div>
+        </div>
+      </div>
+        <div class="col">
+        <div class="card ">
+          <a href="shop_4.html"><img src="../圖片素材/logo_一幕日.jpeg" class="shops card-img-top img-thumbnail shops-card"></a>
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: center;">一木日台中店</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card ">
+          <a href="#"><img src="../圖片素材/Logo_50.png" class="shops card-img-top img-thumbnail shops-card"></a>
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: center;">50收台中店</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card ">
+          <a href="#"><img src="../圖片素材/teatopp.png" class="shops card-img-top img-thumbnail shops-card"></a>
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: center;">TikTop</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<script>
+$(function () {
+    $(".shops").mouseenter(function () {
+        $(this).removeClass("img-thumbnail");
+    })
+
+    $(".shops").mouseleave(function () {
+        $(this).addClass("img-thumbnail");
+    });
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+</html>

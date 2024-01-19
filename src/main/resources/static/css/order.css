@@ -1,0 +1,154 @@
+.nav-item-padding{
+    padding: 15px;
+}
+.navbar {
+    background-color: #FFEBCD;
+    position: relative;
+}
+
+body{
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3)), url(../圖片素材/cappuccinos.jpg);    background-size: cover;
+  background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-size: 26px;
+}
+.container-booking .row{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.container-booking .col-4,
+.container-booking .col-2,
+.container-booking .col-6{
+    font-size: large;
+    /* border: 1px black solid; */
+    padding: 5px;
+    border-radius: 10px ;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-booking .userInfo{
+    flex-direction: column;
+}
+.container-booking p{
+    margin: -7px;
+}
+/* check out */
+.checkout-container{
+    position: fixed;
+    right:0px;
+    bottom: 20px;
+    text-align: center;
+    z-index: 10;
+}
+.table{
+    width: 98%;
+    height: 300px;
+    overflow-y: scroll;
+    border: 1px solid black;
+    border-radius: 5px;
+    background:rgba(255, 255, 255, 1);
+    padding: 2%;
+}
+.tableTitle{
+  border-bottom: 1px dashed black;
+}
+.col1-name{
+    width:40% ;
+    height: 100%;
+    float: left;
+}
+.col2-price{
+    width:15% ;
+    height: 100%;
+    float: left;
+}
+.col3-ice{
+    width:15% ;
+    height: 100%;
+    float: left;
+}
+.col4-sugar{
+    width:15% ;
+    height: 100%;
+    float: left;
+}
+.col5-quantity{
+    width:15% ;
+    height: 100%;
+    float: left;
+}
+.cart{
+    background:rgba(255, 255, 255, 0.6);
+    font-size: 20px;
+    justify-content: left;
+    display: block;
+    border: 1px black solid;
+    border-radius: 5px;
+}
+.cleancart{
+  background:rgba(255, 255, 255, 0.6);
+  font-size: 20px;
+  justify-content: left;
+  display: block;
+  border: 1px black solid;
+  border-radius: 5px;
+  margin: 5px 0px;
+}
+
+  .total{
+    width:100%;
+    height:40px;
+    background:rgba(255, 255, 255, 0.6);
+    color: black;
+    border: 1px solid black;
+    font-weight: bold;  
+    border-radius: 5px;
+
+  }
+  .total-text{
+    width: 50%;
+    height: 40  px;
+    float:left;
+    border-radius: 5px;
+    /* border-right: 2px solid black; */
+    /* align-items: center; */
+  }
+  .total-amount{
+    width:26%;
+    height:40px;
+    float:left;
+    border-radius: 5px;
+    /* padding-top:10px; */
+  }
+  .checkout{
+    width: 60%;
+    margin: auto;
+    height: 50px;
+    
+  }
+  .tableSection{
+    width: 95%;
+    justify-content: center;
+  }
+  .tableSection2{
+    width: 95%;
+    justify-content: center;
+  }
+
+  .container-shop1 .col-9{
+    display: none;
+    justify-content: space-evenly;
+  }
+  .container-shop1 input{
+    width: 40px;
+  }
+  
+  .table, .cleancart {
+    display: none;
+  }
