@@ -8,16 +8,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CartItem {
-	private Menu product;
+	private Integer cartItemId;
+	private Integer cartId;
+	private Integer menuId;
 	private Integer quantity;
-	private Integer totalPrice;
+	private Menu menu;
+	private Integer subTotal;
 	
-	public void calculateTotalPrice() {
-		totalPrice= product.getPrice()*quantity;
+	public void calculateSubTotal() {
+		subTotal= menu.getPrice() * quantity;
 	}
-	public Integer getTotalPrice() {
-		return totalPrice;
-	}
+    public Integer getTotalPrice() {
+        return subTotal;
+    }
+
 	public void add(CartItem item) {
 		// TODO Auto-generated method stub
 		
