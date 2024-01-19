@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Shop {
-	private Integer id;
-	private String name;
+	private Integer shopId;
+	private String shopName;
 	private String tel;
 	private String address;
 	private LocalDateTime joinTime;
