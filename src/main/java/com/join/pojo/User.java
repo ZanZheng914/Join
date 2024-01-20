@@ -23,11 +23,11 @@ public class User {
 		this.userId=userId;
 	}
 
-	public Object getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public Object getUsername() {
+	public String getUsername() {
 		return username;
 	}
 

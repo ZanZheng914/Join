@@ -27,6 +27,8 @@ public class AuthController {
 	public String login(@RequestBody User user) {
 		//從資料庫獲取使用者資訊，依據使用者名稱
 		User storedUser = userService.getUserByUsername(user.getUsername());
+				
+
 		
 	//驗證密碼
 	if(storedUser != null && BCrypt.checkpw(user.getPassword(), storedUser.getPassword())) {

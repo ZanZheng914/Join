@@ -27,6 +27,7 @@ public interface UserService {
 	
 	//批量刪除操作
 	void delete(List<Integer> ids);
+	
 	//根據用戶名獲取用戶
 	User getUserByUsername(String username);
 
