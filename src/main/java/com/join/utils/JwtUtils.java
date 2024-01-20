@@ -1,7 +1,10 @@
 package com.join.utils;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
+
+import com.join.pojo.User;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -12,7 +15,11 @@ public class JwtUtils {
 	private static Long expire = 43200000L;
 	
 	//生成jwt令牌
-	public static String generateJwt(Map<String,Object>claims) {
+	public static String generateJwt(User user) {
+		Map<String, Object> claims = new HashMap<>();
+		claims.put("userId",user.getUserId());
+		claims.put("username", user.getUsername());
+		
 		String jwt=Jwts.builder()
 			.addClaims(claims)
 			.signWith(SignatureAlgorithm.HS256, signKey)
@@ -27,8 +34,5 @@ public class JwtUtils {
 				.parseClaimsJws(jwt)
 				.getBody();
 		return claims;
-	}
-	
-	
-	
+	}	
 }

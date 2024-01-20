@@ -18,4 +18,25 @@ public class User {
 	private String company;
 	private String dept;
 	private LocalDate creatTime;
+	
+	public void setUserId(Integer userId) {
+		this.userId=userId;
+	}
+
+	public Object getUserId() {
+		return userId;
+	}
+
+	public Object getUsername() {
+		return username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String hashedPassword) {
+		this.password=hashedPassword;
+		
+	}
 }

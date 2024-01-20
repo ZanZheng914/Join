@@ -12,7 +12,7 @@ import com.join.pojo.User;
 
 @Mapper
 public interface UserMapper {
-	//資料庫操作，註冊新使用者、驗證登入
+	//資料庫操作，CRUD
 	
 	@Select("SELECT * FROM user")
 	List<User> list();
