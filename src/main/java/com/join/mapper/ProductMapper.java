@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+//import org.apache.ibatis.annotations.Update;
 
 import com.join.pojo.Product;
 
@@ -22,7 +22,7 @@ public interface ProductMapper {
 	@Insert("INSERT INTO product(shopId, productName,price) VALUES(#{shopId},#{productName},#{price})")
 	void addProduct(Product product);
 
-	@Update("UPDATE product SET shopId=#{shopId},productName=#{productName},price=#{price} WHERE productId=#{productId}")
+//	@Update("UPDATE product SET shopId=#{shopId},productName=#{productName},price=#{price} WHERE productId=#{productId}")
 	void updateProduct(Product product);
 	
 	@Delete("DELETE FROM product WHERE productId=#{productId}")
