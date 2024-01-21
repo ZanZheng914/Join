@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 import org.mindrot.jbcrypt.*;
 
 import com.join.pojo.User;
@@ -14,26 +17,23 @@ import com.join.utils.JwtUtils;
 
 @RestController
 public class AuthController {
+	@Autowired
 	private UserService userService;
-	private JwtUtils jwtUtils;
-	
-    @Autowired
-    public AuthController(UserService userService, JwtUtils jwtUtils) {
-        this.userService = userService;
-        this.jwtUtils = jwtUtils;
-    }
 
 	@PostMapping("/login")
 	public String login(@RequestBody User user) {
 		//從資料庫獲取使用者資訊，依據使用者名稱
-		User storedUser = userService.getUserByUsername(user.getUsername());
-				
+		User storedUser = userService.login(user);
 
-		
 	//驗證密碼
 	if(storedUser != null && BCrypt.checkpw(user.getPassword(), storedUser.getPassword())) {
 		//生成令牌
-		return jwtUtils.generateJwt(storedUser);
+		Map<String,Object> claims =new HashMap<>();
+		claims.put("userId", storedUser.getUserId());
+		claims.put("username", storedUser.getUsername());
+		String jwt = JwtUtils.generateJwt(claims);
+		
+		return jwt;
 	}else {
 		return "Login failed";
 	}

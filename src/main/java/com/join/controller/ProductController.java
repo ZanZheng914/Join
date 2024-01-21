@@ -46,4 +46,4 @@ public class ProductController {
 	public void deleteProduct(@PathVariable Integer productId) {
 		productService.deleteProduct(productId);
 	}
-	}
+}
