@@ -22,7 +22,7 @@ public interface ProductMapper {
 	@Insert("INSERT INTO product(shopId, productName,price) VALUES(#{shopId},#{productName},#{price})")
 	void addProduct(Product product);
 
-	@Update("UPDATE product SET shopId=#{shopId},productName=#{productName},price=#{price} WHERE productId=#{productId}")
+//	@Update("UPDATE product SET shopId=#{shopId},productName=#{productName},price=#{price} WHERE productId=#{productId}")
 	void updateProduct(Product product);
 	
 	@Delete("DELETE FROM product WHERE productId=#{productId}")
