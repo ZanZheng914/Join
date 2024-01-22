@@ -56,8 +56,4 @@ public class AuthController {
 	public void logout(@RequestHeader("Authorization") String token) {
 		
 	}
-	
-	
-	
-	
 }
