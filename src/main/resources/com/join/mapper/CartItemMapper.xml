@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.join.mapper.CartItemMapper">
+	<resultMap id="cartItemIdResultMap" type="com.join.pojo.CartItem">
+		<id column="cartItemId" property="cartItemId"/>
+		<result column="cartId" property="cartId"/>
+		<result column="productId" property="propertyId"/>
+		<result column="quantity" property="quantity"/>
+		<result column="price" property="price"/>
+		<result column="subTotal" property="subTotal"/>
+	</resultMap>
+	
+	<select id="getCartItemById" resultMap="CartItemResultMap">
+		SELECT * FROM cartItem WHERE cartItemId=#{cartItemId}
+	</select>
+
+	<insert id="insertCartItem" parameterType="com.join.pojo.CartItem">
+		INSERT INTO cartItem (cartId,productId,quantity,price,subTotal)
+		VALUES (#{cartId},#{productId},#{quantity},#{price},#{subTotal})
+	</insert>
+	
+    <update id="updateCartItem" parameterType="com.join.pojo.CartItem">
+        <set>
+            <if test="cartId != null">cartId = #{cartId},</if>
+            <if test="productId != null">productId = #{productId},</if>
+            <if test="quantity != null">quantity = #{quantity},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="subTotal != null">subTotal = #{subTotal},</if>
+        </set>
+        WHERE cartItemId = #{cartItemId}
+    </update>
+
+    <delete id="deleteCartItem" parameterType="int">
+        DELETE FROM cart_item WHERE cartItemId = #{cartItemId}
+    </delete>
+</mapper>
