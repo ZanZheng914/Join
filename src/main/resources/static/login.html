@@ -45,11 +45,11 @@
             <form class="login-form" id="loginForm" onsubmit="submitLoginForm();">
                 <div class="form-group">
                     <input id="username" type="text" class="form-control"
-                        placeholder="請輸入使用者名稱">
+                        placeholder="請輸入使用者名稱"  autocomplete="off">
                 </div>
                 <div class="form-group">
                     <input id="password-field" type="password"
-                    class="form-control"  placeholder="請輸入密碼">
+                    class="form-control"  placeholder="請輸入密碼"  autocomplete="off">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="form-control btn btn-primary submit px-3"
@@ -68,21 +68,26 @@
         var username = document.getElementById('username').value;
         var password = document.getElementById('password-field').value;
 
-        var user={
+        user={
             "username": username,
             "password": password
         }
-    };
+    
     //使用fetch呼叫後端API
-fetch('/login',{
-    method: 'POST',
-    headers:{
-        'Content-Type' : 'application/json'
-    },
-    body :JSON.stringify(user)
-})
-.then(response=> response.text())
-.then(token=>{
+	fetch('/login',{
+	    method: 'POST',
+	    headers:{
+	        'Content-Type' : 'application/json'
+	    },
+	    body :JSON.stringify(user)
+	})
+	.then(response=> {
+	if(!response.ok){
+		throw new Error('Login Failed');
+	}
+	return	response.text();
+    })
+	.then(token=>{
     console.log("JWT Token:" + token);
     //使用SweerAlert顯示成功登入提示
     Swal.fire({
@@ -102,11 +107,11 @@ fetch('/login',{
     	    `
     	  }
     	});
-    
-})
-.catch(error=>{
-    console.error('Error',error)
-    
+    })
+	.catch(error=>{
+  	  console.error('Error',error)
+  	  console.log('Error message',error.message);
+	  console.log('Error response:',error.response);    
     Swal.fire({
   	  title: "登入失敗",
   	  showClass: {
@@ -122,9 +127,10 @@ fetch('/login',{
   	      animate__fadeOutDown
   	      animate__faster
   	    `
-  	  }
-  	});
-});
+	  	  }
+	  	});
+	});
+  };
     //防止表單正常提交，(有要用AJAX再寫)
     // return false;
 </script>

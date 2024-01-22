@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -17,7 +18,7 @@ import org.mindrot.jbcrypt.*;
 import com.join.pojo.User;
 import com.join.service.UserService;
 import com.join.utils.JwtUtils;
-
+@CrossOrigin
 @RestController
 public class AuthController {
 	@Autowired
@@ -27,7 +28,7 @@ public class AuthController {
 	public ResponseEntity<String> login(@RequestBody User user) {
 		//從資料庫獲取使用者資訊，檢查使用者名稱與密碼
 		User storedUser = userService.login(user);
-
+		
 	//驗證密碼
 	if(storedUser != null && BCrypt.checkpw(user.getPassword(), storedUser.getPassword())) {
 		//生成令牌
