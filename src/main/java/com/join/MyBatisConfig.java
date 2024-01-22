@@ -24,7 +24,7 @@ public class MyBatisConfig {
 		
 		//設置MyBatis配置
 		PathMatchingResourcePatternResolver resolver= new PathMatchingResourcePatternResolver();
-		sqlSessionFactoryBean.setConfigLocation(resolver.getResource("classpath:mybatis-config"));
+		sqlSessionFactoryBean.setConfigLocation(resolver.getResource("classpath:mybatis-config.xml"));
 		
 		sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/com/join/mapper/*.xml"));
 		
