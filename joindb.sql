@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost:8889
--- 產生時間： 2024 年 01 月 19 日 12:24
+-- 產生時間： 2024 年 01 月 22 日 07:23
 -- 伺服器版本： 5.7.39
 -- PHP 版本： 7.4.33
 
@@ -102,7 +102,16 @@ INSERT INTO `product` (`productid`, `shopid`, `product`, `price`) VALUES
 (4, 1, '柚香覺醒307', 67),
 (5, 1, '寧夏307', 60),
 (6, 1, '京楓檸檬紅茶', 50),
-(7, 1, '雪匠奶茶', 69);
+(7, 1, '雪匠奶茶', 69),
+(8, 2, '竹香翡翠', 40),
+(9, 2, '招牌紅茶', 35),
+(10, 2, '炭培烏龍', 35),
+(11, 2, '油切蕎麥茶', 35),
+(12, 2, '手採高山青', 35),
+(13, 2, '桂花蕎麥茶', 55),
+(14, 2, '柚子烏龍', 65),
+(15, 2, '粉粿舞伎406奶茶', 79),
+(16, 2, '極黑芝麻拿鐵', 80);
 
 -- --------------------------------------------------------
 
@@ -123,7 +132,8 @@ CREATE TABLE `shop` (
 --
 
 INSERT INTO `shop` (`shopid`, `shopName`, `tel`, `address`, `joinTime`) VALUES
-(1, '八曜和茶台中精誠門市', '0422667788', '台中市西區精誠路25號', '2024-01-01');
+(1, '八曜和茶台中精誠門市', '0422667788', '台中市西區精誠路25號', '2024-01-01'),
+(2, '一沐日台中大墩店', '04-28825252', '台中市南屯區大墩十一街294號', '2024-01-01');
 
 -- --------------------------------------------------------
 
@@ -142,6 +152,13 @@ CREATE TABLE `user` (
   `dept` varchar(255) DEFAULT NULL,
   `createTime` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 傾印資料表的資料 `user`
+--
+
+INSERT INTO `user` (`userid`, `username`, `password`, `name`, `email`, `gender`, `company`, `dept`, `createTime`) VALUES
+(1, 'user', 'user', '皮卡丘', 'user@mail.com', 1, '台積電竹科廠', '人資部', '2024-01-02');
 
 --
 -- 已傾印資料表的索引
@@ -228,19 +245,19 @@ ALTER TABLE `orders`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `product`
 --
 ALTER TABLE `product`
-  MODIFY `productid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `productid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `shop`
 --
 ALTER TABLE `shop`
-  MODIFY `shopid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `shopid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user`
 --
 ALTER TABLE `user`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 已傾印資料表的限制式
