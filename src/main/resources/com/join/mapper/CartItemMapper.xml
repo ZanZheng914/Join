@@ -9,6 +9,14 @@
 		<result column="quantity" property="quantity"/>
 		<result column="price" property="price"/>
 		<result column="subTotal" property="subTotal"/>
+		
+	    <!-- 將 Product 相關信息映射到 CartItem 中 -->
+	    <association property="product" javaType="com.join.pojo.Product">
+	        <id column="productId" property="productId"/>
+	        <result column="shopId" property="shopId"/>
+	        <result column="productName" property="productName"/>
+	        <result column="price" property="price"/>
+	    </association>
 	</resultMap>
 	
 	<select id="getCartItemById" resultMap="CartItemResultMap">

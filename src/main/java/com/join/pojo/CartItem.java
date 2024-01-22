@@ -15,4 +15,5 @@ public class CartItem {
 	private Integer price;
 	private Integer subTotal;
 	
+	private Product product;
 }

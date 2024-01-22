@@ -1,6 +1,7 @@
 package com.join.pojo;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,4 +40,6 @@ public class User {
 		this.password=hashedPassword;
 		
 	}
+	
+	private List<Cart> cart;
 }
