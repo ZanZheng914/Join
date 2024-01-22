@@ -1,9 +1,10 @@
 package com.join.mapper;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
 
 import com.join.pojo.OperateLog;
-
+@Mapper
 public interface OperateLogMapper {
 
 	//插入日誌數據
