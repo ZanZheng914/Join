@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.join.pojo.Product;
 import com.join.service.ProductService;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @RequestMapping("/products")
 @RestController
 public class ProductController {

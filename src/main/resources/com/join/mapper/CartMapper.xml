@@ -8,6 +8,10 @@
 			<result column="userId" property="userId"/>
 			<result column="totalPrice" property="totalPrice"/>
 			<result column="createTime" property="createTime"/>
+			
+      	<association property="user" resultMap="UserResultMap">
+            <id column="userId" property="userId"/>
+        </association>
 	</resultMap>
 	
 	<select id="getCartById" resultMap="CartResultMap">

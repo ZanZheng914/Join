@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.ResultMap;
 
 import com.join.pojo.User;
 
@@ -35,9 +36,11 @@ public interface UserMapper {
 
 
 	//查詢用戶
+	@ResultMap("UserResultMap")
 	@Select("SELECT * FROM user WHERE userId=#{userId)")
 	User getUserById(Integer userId);
 	
+	@ResultMap("UserResultMap")
 	@Select("SELECT * FROM user WHERE username = #{username}")
 	User getUserByUsername(@Param("username") String username);
 
