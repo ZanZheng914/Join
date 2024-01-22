@@ -2,6 +2,9 @@ package com.join.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -21,7 +24,7 @@ public class AuthController {
 	private UserService userService;
 
 	@PostMapping("/login")
-	public String login(@RequestBody User user) {
+	public ResponseEntity<String> login(@RequestBody User user) {
 		//從資料庫獲取使用者資訊，依據使用者名稱
 		User storedUser = userService.login(user);
 
@@ -32,10 +35,12 @@ public class AuthController {
 		claims.put("userId", storedUser.getUserId());
 		claims.put("username", storedUser.getUsername());
 		String jwt = JwtUtils.generateJwt(claims);
-		
-		return jwt;
+		//返回令牌，使用ResponseEntity包裝
+		HttpHeaders headers = new HttpHeaders();
+		headers.add(HttpHeaders.AUTHORIZATION, "Bearer " + jwt);
+		return new ResponseEntity<>("Login success!",headers,HttpStatus.OK);
 	}else {
-		return "Login failed";
+		return new ResponseEntity<>("Login failed",HttpStatus.UNAUTHORIZED);
 	}
 }
 	
