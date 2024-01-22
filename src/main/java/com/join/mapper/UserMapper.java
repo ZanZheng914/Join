@@ -24,14 +24,11 @@ public interface UserMapper {
 
 	void deleteUser(Integer userId);
 
-
 	//查詢用戶
 	User getUserById(Integer userId);
 	
 	User getUserByUsername(@Param("username") String username);
 
 	User getUserByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
-
-
 
 }

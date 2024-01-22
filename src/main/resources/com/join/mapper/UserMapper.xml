@@ -27,6 +27,10 @@
     <select id="getUserByUsername" parameterType="String" resultMap="UserResultMap">
         SELECT * FROM user WHERE username = #{username}
     </select>
+    
+    <select id="getUserByUsernameAndPassword" parameterType="String" resultMap="UserResultMap">
+	    SELECT * FROM user WHERE username = #{username} AND password = #{password}
+	</select>
 
     <update id="updateUser" parameterType="com.join.pojo.User">
         UPDATE user
