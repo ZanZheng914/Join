@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.join.mapper.OrderMapper">
+
+	<resultMap id="ProductResultMap" type="com.join.pojo.Product">
+		<id column="productId" property="productId"/>
+		<result column="shopId" property="shopId"/>
+		<result column="productName" property="productName"/>
+		<result column="price" property="price"/>	
+	</resultMap>
+
+	<resultMap id="CartItemResultMap" type="com.join.pojo.CartItem">
+		<id column="cartItemId" property="cartItemId"/>
+        <result column="cartId" property="cartId"/>
+        <result column="productId" property="productId"/>
+        <result column="quantity" property="quantity"/>
+        <result column="price" property="price"/>
+        <result column="subTotal" property="subTotal"/>
+        <!-- 購物車品項與商品表的關聯 -->
+        <association property="product" resultMap="ProductResultMap">
+            <id column="productId" property="productId"/>
+        </association>
+	</resultMap>
+
+    <resultMap id="CartResultMap" type="com.join.pojo.Cart">
+        <id column="cartId" property="cartId"/>
+        <result column="userId" property="userId"/>
+        <result column="totalPrice" property="totalPrice"/>
+        <result column="createTime" property="createTime"/>
+        <!-- 與 CartItem 的關聯映射 -->
+        <collection property="cartItems" ofType="com.join.pojo.CartItem" resultMap="CartItemResultMap">
+            <id column="cartItemId" property="cartItemId"/>
+        </collection>
+    </resultMap>
+    
+    <resultMap id="UserResultMap" type="com.join.pojo.User">
+        <id column="userId" property="userId"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="name" property="name"/>
+        <result column="email" property="email"/>
+        <result column="gender" property="gender"/>
+        <result column="company" property="company"/>
+        <result column="dept" property="dept"/>
+        <result column="creatTime" property="creatTime"/>  
+        <!-- 與 Cart 的關聯映射 -->
+        <collection property="cart" ofType="com.join.pojo.Cart" resultMap="CartResultMap">
+            <id column="cartId" property="cartId"/>
+        </collection>
+    </resultMap>
+
+
+    <resultMap id="OrderResultMap" type="com.join.pojo.Orders">
+        <id column="orderId" property="orderId"/>
+        <result column="totalPrice" property="totalPrice"/>
+        <result column="orderDate" property="orderDate"/>
+        <result column="shippingAddress" property="shippingAddress"/>
+        <!-- 與 User 的關聯映射 -->
+        <association property="user" resultMap="UserResultMap">
+            <id column="userId" property="userId"/>
+        </association>
+        
+        <!-- 與 Cart 的關聯映射 -->
+        <association property="cart" resultMap="CartResultMap">
+            <id column="cartId" property="cartId"/>
+        </association>
+
+        <!-- 與 CartItem 的關聯映射 -->
+        <collection property="cartItems" ofType="com.join.pojo.CartItem" resultMap="CartItemResultMap">
+            <id column="cartItemId" property="cartItemId"/>
+        </collection>
+    </resultMap>
+    
+    <select id="getOrderById" resultMap="OrderResultMap">
+        SELECT * FROM orders WHERE orderId = #{orderId}
+    </select>
+
+</mapper>

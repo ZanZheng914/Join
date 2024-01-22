@@ -1,5 +1,9 @@
 package com.join.mapper;
 
+import org.apache.ibatis.annotations.Param;
+
+import com.join.pojo.Orders;
+
 public interface OrderMapper {
-	//處理資料庫新增、查詢訂單
+	Orders getOrderById(@Param("orderId") Integer orderId);
 }

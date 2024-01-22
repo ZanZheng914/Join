@@ -1,5 +1,7 @@
 package com.join.service;
 
+import com.join.pojo.Orders;
+
 public interface OrderService {
-	//創建與查看訂單
+	Orders getOrderById(Integer orderId);
 }
