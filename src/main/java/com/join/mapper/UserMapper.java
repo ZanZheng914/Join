@@ -30,6 +30,7 @@ public interface UserMapper {
 	
 	User getUserByUsername(@Param("username") String username);
 
+	User getUserByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 
 
 

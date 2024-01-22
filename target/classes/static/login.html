@@ -103,6 +103,24 @@ fetch('/login',{
 })
 .catch(error=>{
     console.error('Error',error)
+    
+    Swal.fire({
+  	  title: "登入失敗",
+  	  showClass: {
+  	    popup: `
+  	      animate__animated
+  	      animate__fadeInUp
+  	      animate__faster
+  	    `
+  	  },
+  	  hideClass: {
+  	    popup: `
+  	      animate__animated
+  	      animate__fadeOutDown
+  	      animate__faster
+  	    `
+  	  }
+  	});
 });
     //防止表單正常提交，(有要用AJAX再寫)
     // return false;

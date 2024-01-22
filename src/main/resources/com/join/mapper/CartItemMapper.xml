@@ -19,7 +19,7 @@
 	    </association>
 	</resultMap>
 	
-	<select id="getCartItemById" resultMap="CartItemResultMap">
+	<select id="getCartItemById" resultMap="cartItemIdResultMap">
 		SELECT * FROM cartItem WHERE cartItemId=#{cartItemId}
 	</select>
 

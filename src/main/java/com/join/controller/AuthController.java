@@ -25,7 +25,7 @@ public class AuthController {
 
 	@PostMapping("/login")
 	public ResponseEntity<String> login(@RequestBody User user) {
-		//從資料庫獲取使用者資訊，依據使用者名稱
+		//從資料庫獲取使用者資訊，檢查使用者名稱與密碼
 		User storedUser = userService.login(user);
 
 	//驗證密碼
