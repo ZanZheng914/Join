@@ -6,7 +6,10 @@
 * Boostrap, CSS
 * Maven
 * Lombok
+* AOP & Log
 
 # ScreenShots
 ![image1](https://github.com/ZanZheng914/Join/blob/main/src/main/resources/read1.png?raw=true)
 ![image2](https://github.com/ZanZheng914/Join/blob/main/src/main/resources/read2.png?raw=true)
+
+2024/1/23 完成後端基本編寫、成功與前端連接完成註冊與登入功能
