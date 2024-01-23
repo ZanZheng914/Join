@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost:8889
--- 產生時間： 2024 年 01 月 22 日 07:23
+-- 產生時間： 2024 年 01 月 23 日 08:55
 -- 伺服器版本： 5.7.39
 -- PHP 版本： 7.4.33
 
@@ -158,7 +158,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userid`, `username`, `password`, `name`, `email`, `gender`, `company`, `dept`, `createTime`) VALUES
-(1, 'user', 'user', '皮卡丘', 'user@mail.com', 1, '台積電竹科廠', '人資部', '2024-01-02');
+(1, 'user', 'user', '皮卡丘', 'user@mail.com', 1, '台積電竹科廠', '人資部', '2024-01-02'),
+(2, 'user2', '$2a$10$n3nkjK/sreQ8Y/VqN6uZm.sBsR4qR74LJtY5rdT0OAHbhCYSulQzi', 'user2', 'user2@mail.com', 1, '測試公司', '測試部', '2024-01-04'),
+(3, 'user3', '$2a$10$LoDWm1cU/Jj61jmaoNz9oOIldIefSSPHMm5AvDNOiGtiAJG6AtL/K', 'user3', 'user3@mail.com', 1, 'UU', 'EE', '2024-01-23');
 
 --
 -- 已傾印資料表的索引
@@ -257,7 +259,7 @@ ALTER TABLE `shop`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user`
 --
 ALTER TABLE `user`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 已傾印資料表的限制式
