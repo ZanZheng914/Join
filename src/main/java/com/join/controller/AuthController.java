@@ -26,10 +26,7 @@ public class AuthController {
 	private UserService userService;
 
 	@PostMapping("/login")
-	public ResponseEntity<String> login(@RequestParam String username,@RequestParam String password) {
-		User user = new User();
-		user.setUsername(username);
-		user.setPassword(password);
+	public ResponseEntity<String> login(@RequestBody User user) {
 		
 		try {
 		//從資料庫獲取使用者資訊，檢查使用者名稱與密碼
