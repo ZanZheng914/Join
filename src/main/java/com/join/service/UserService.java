@@ -3,10 +3,10 @@ package com.join.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.join.pojo.User;
-
-@Service
+@Transactional
 public interface UserService {
 
 	//處理註冊、登入

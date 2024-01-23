@@ -1,6 +1,6 @@
 package com.join.pojo;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,7 +17,7 @@ public class User {
 	private Short gender;
 	private String company;
 	private String dept;
-	private LocalDate createTime;
+	private LocalDateTime createTime;
 	
 	public void setUserId(Integer userId) {
 		this.userId=userId;
@@ -37,9 +37,12 @@ public class User {
 
 	public void setPassword(String hashedPassword) {
 		this.password=hashedPassword;
-		
 	}
-    public void setCreateTime(LocalDate createTime) {
+	public LocalDateTime getCreateTime() {
+		return createTime;
+	}
+	
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
     public String getCompany() {

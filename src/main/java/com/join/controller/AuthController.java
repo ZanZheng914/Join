@@ -63,10 +63,11 @@ public class AuthController {
 		user.setPassword(hashedPassword);
 		//保存用戶訊息
 		userService.save(user);
-		
+		System.out.println("註冊成功");
         return new ResponseEntity<>("Registration success!", HttpStatus.OK);
 	}catch(Exception e) {
 		e.printStackTrace();
+		System.out.println("註冊失敗");
         return new ResponseEntity<>("Registration failed", HttpStatus.INTERNAL_SERVER_ERROR);
 	}	
 }

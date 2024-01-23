@@ -19,6 +19,11 @@
     <select id="list" resultMap="UserResultMap">
         SELECT * FROM user
     </select>
+    
+    <insert id="insertUser" parameterType="com.join.pojo.User">
+	    INSERT INTO user (username, password, name, email, gender, company, dept, createTime)
+	    VALUES (#{username}, #{password}, #{name}, #{email}, #{gender}, #{company}, #{dept}, #{createTime})
+	</insert>
 
     <select id="getUserById" parameterType="int" resultMap="UserResultMap">
         SELECT * FROM user WHERE userId = #{userId}
