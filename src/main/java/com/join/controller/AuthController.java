@@ -30,8 +30,9 @@ public class AuthController {
 		
 		try {
 		//從資料庫獲取使用者資訊，檢查使用者名稱與密碼
-		User storedUser = userService.login(user);
-		
+		User storedUser = userService.getUserByUsername(user.getUsername());
+
+		System.out.println("檢查用戶:"+ storedUser);
 	//驗證密碼
 	if(storedUser != null && BCrypt.checkpw(user.getPassword(), storedUser.getPassword())) {
 		//生成令牌
@@ -48,6 +49,7 @@ public class AuthController {
 	}
 }catch(Exception e) {
 	e.printStackTrace();
+	System.out.println("Erroe message:" +e.getMessage());
 	return new ResponseEntity<>("Login failed",HttpStatus.INTERNAL_SERVER_ERROR); 
 	}
 }

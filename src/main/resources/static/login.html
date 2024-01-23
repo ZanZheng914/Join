@@ -63,20 +63,20 @@
 //    var user={}; //初始化為空值並在外部宣告
 
     function submitLoginForm(){
-		
+		var xhr = new XMLHttpRequest();		
     	var user={
 	   			username : document.getElementById('username').value,
 	   			password : document.getElementById('password-field').value
-	    	};
-    	
-//        var username = document.getElementById('username').value;
-//        var password = document.getElementById('password-field').value;
+	    };
+/*    	
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password-field').value;
             	
-//	    var formData = new URLSearchParams();
-//	    formData.append('username',username);
-//		formData.append('password',password);
+	    var formData = new URLSearchParams();
+	    formData.append('username',username);
+		formData.append('password',password);*/
 		 
-		var xhr = new XMLHttpRequest();
+
 	    xhr.open('POST','/login',true);
 	    
 	    //設置請求頭
