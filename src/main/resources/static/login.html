@@ -66,19 +66,13 @@
         var username = document.getElementById('username').value;
         var password = document.getElementById('password-field').value;
         
-        user = {
-                username: username,
-                password: password
-            };
         	
 	    var formData = new FormData();
-	    formData.append('username',user.username);
-		formData.append('password',user.password);
+	    formData.append('username',username);
+		formData.append('password',password);
 		 
 		var xhr = new XMLHttpRequest();
 	    xhr.open('POST','/login',true);
-	    //設定Content-Type
-	    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState === 4){
@@ -103,8 +97,7 @@
 				    	      animate__faster
 				    	    `
 				    	  }
-				    	});
-				}
+				    });
 			}else{
 				//登入失敗			
 				console.log('登入失敗');
@@ -126,9 +119,9 @@
 			    	    `
 			  	  	  }
 			  	 });
+				}
 			}
 		}
-    	
         xhr.send(formData);
     }
 

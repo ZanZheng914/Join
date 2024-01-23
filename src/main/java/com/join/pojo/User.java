@@ -17,7 +17,7 @@ public class User {
 	private Short gender;
 	private String company;
 	private String dept;
-	private LocalDate creatTime;
+	private LocalDate createTime;
 	
 	public void setUserId(Integer userId) {
 		this.userId=userId;
@@ -39,5 +39,13 @@ public class User {
 		this.password=hashedPassword;
 		
 	}
-	
+    public void setCreateTime(LocalDate createTime) {
+        this.createTime = createTime;
+    }
+    public String getCompany() {
+    	return company;
+    }
+	public String getdept() {
+		return dept;
+	}
 }

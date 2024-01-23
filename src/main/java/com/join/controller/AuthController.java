@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -25,7 +26,12 @@ public class AuthController {
 	private UserService userService;
 
 	@PostMapping("/login")
-	public ResponseEntity<String> login(@RequestBody User user) {
+	public ResponseEntity<String> login(@RequestParam String username,@RequestParam String password) {
+		User user = new User();
+		user.setUsername(username);
+		user.setPassword(password);
+		
+		try {
 		//從資料庫獲取使用者資訊，檢查使用者名稱與密碼
 		User storedUser = userService.login(user);
 		
@@ -43,18 +49,27 @@ public class AuthController {
 	}else {
 		return new ResponseEntity<>("Login failed",HttpStatus.UNAUTHORIZED);
 	}
+}catch(Exception e) {
+	e.printStackTrace();
+	return new ResponseEntity<>("Login failed",HttpStatus.INTERNAL_SERVER_ERROR); 
+	}
 }
 	
 	
 	@PostMapping("/register")
-	public void register(@RequestBody User user) {
+	public ResponseEntity<String> register(@RequestBody User user) {
+		try {
 		String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
 		user.setPassword(hashedPassword);
-		
+		//保存用戶訊息
 		userService.save(user);
-	}
-	
-	public void logout(@RequestHeader("Authorization") String token) {
 		
-	}
+        return new ResponseEntity<>("Registration success!", HttpStatus.OK);
+	}catch(Exception e) {
+		e.printStackTrace();
+        return new ResponseEntity<>("Registration failed", HttpStatus.INTERNAL_SERVER_ERROR);
+	}	
+}
+public void logout(@RequestHeader("Authorization") String token) {
+	};
 }
