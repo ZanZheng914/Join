@@ -1,17 +1,3 @@
-// var user_A={
-//     companyName:"台GG-台中廠",
-//     department:"R滴",
-//     nickname:"馬斯克",
-// };  
-
-
-// var user_B={
-//     companyName:"台GG-台中廠",
-//     department:"R滴",
-//     nickname:"皮卡丘",
-//     tel:"0912345678",
-// };  
-
 $(document).ready(function(){
   var users = {
     "user_A": {
