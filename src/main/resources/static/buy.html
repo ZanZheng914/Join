@@ -10,6 +10,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+    
+    </script>
 </head>
 <body>
     <!-- NavBar -->
@@ -46,9 +50,7 @@
         </select>  
       </div>
       <div class="col-4 userInfo" id="userInfo">
-        <!-- 部門：<span id="userDepartment"></span> <br>
-        姓名：<span id="userNickname"></span> <br>
-        電話：<span id="userTel"></span> <br> -->
+
         <p>部門：<span id="userDepartment"></span></p> <br>
         <p>姓名：<span id="userNickname"></span></p> <br>
         <p>電話：<span id="userTel"></span></p>
@@ -86,7 +88,7 @@
 <div class="container-shop1 " style="margin-top: 10px;">
   <div class="row">
       <div class="col-9">
-        <table class="tableSection" style="display: none;">
+        <table class="tableSection" style="display: show;">
           <thead class="tableTitle">
             <tr>
               <th>品名</th>
@@ -97,7 +99,8 @@
               <th> &nbsp; </th>
             </tr>
           </thead>
-          <tbody class="drink">
+          
+<!--           <tbody class="drink">
             <tr>
               <td>
                   <p class="drinkname">覺醒紅茶</p>               
@@ -253,7 +256,7 @@
               <td><button type="button" class="add-to-cart btn btn-primary" data-name="檸檬茶" data-price="55">加入購物車</button></td>
             </tr>
           </tbody>
-          <table class="tableSection2" style="display: none;">
+          <table class="tableSection2" style="display: show;">
             <thead class="tableTitle">
               <tr>
                 <th>品名</th>
@@ -419,7 +422,7 @@
                 </td> 
                 <td><button type="button" class="add-to-cart btn btn-primary" data-name="百香ＱＱ" data-price="65">加入購物車</button></td>
               </tr>
-            </tbody>
+            </tbody> -->
         </div>
   </div>
 </div>  
@@ -434,9 +437,9 @@
   </div>
   <div>
     <a class="cart" title="Your Cart" id="cart">
-      <img src="../圖片素材/cart.png" style="width: 50px;height: 50;cursor: pointer;"/>
+      <img src="../images/cart.png" style="width: 50px;height: 50;cursor: pointer;"/>
       <span class="empty" id="count-item" data-count="0">0 item</span>
-    </a><div class="cleancart remove"><span>清除購物車</span><img id="cleancart" src="../圖片素材/delete.png" style="width: 45px;cursor: pointer;"></div>
+    </a><div class="cleancart remove"><span>清除購物車</span><img id="cleancart" src="../images/delete.png" style="width: 45px;cursor: pointer;"></div>
   </div>
   <div class="total">
     <div class="total-text">Total：</div>
