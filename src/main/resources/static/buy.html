@@ -13,33 +13,30 @@
     
     <script>
     	function getUserByName(name){
-    		
-    		console.log("Requesting user with name:",name);
-    		
+   		
     		var xhr = new XMLHttpRequest();
     		xhr.onreadystatechange= function(){
     			if(xhr.readyState === XMLHttpRequest.DONE){
     				if(xhr.status === 200){
     					var userData = JSON.parse(xhr.responseText);
-    					
-    					console.log("獲取userData:",userData);
     					updateUserInfo(userData);
     				}else{
     					console.log("讀取資料失敗:",xhr.statusText);
     				}
     			}
     		};
-    		
-    		//添加錯誤處理
-    		xhr.onerror = function(){console.error("發生錯誤，無法完成請求");};
-    		
-    		xhr.open("GET", `/name/${name}`,true);
+  		
+    		xhr.open("GET", `/user/name/${name}`,true);
     		xhr.send();
     	}
-    	function updateUserInfo(userData){
-		document.getElementById("company").innerText=`公司: ${userData.company}`;
-		document.getElementById("dept").innerText=`部門: ${userData.dept}`;
-		document.getElementById("email").innerText=`Email: ${userData.email}`;
+    	function updateUserInfo(userData){   
+    	    var companyElement = document.querySelector("[data-id='company']");
+    	    var deptElement = document.querySelector("[data-id='dept']");
+    	    var emailElement = document.querySelector("[data-id='email']");
+
+            companyElement.innerText = `${userData.company}`;
+            deptElement.innerText = `${userData.dept}`;
+            emailElement.innerText = `${userData.email}`;           
 		}
 
     </script>
@@ -79,11 +76,9 @@
         </select>  
       </div>
       <div class="col-4 userInfo" id="userInfo">
-
         <p>公司：<span data-id="company"></span></p> <br>
         <p>部門：<span data-id="dept"></span></p> <br>
         <p>Email：<span data-id="email"></span></p>
-
       </div>
     </div>
     <div class="row col-10 mx-auto">
