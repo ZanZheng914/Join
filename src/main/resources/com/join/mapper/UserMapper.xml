@@ -33,6 +33,11 @@
         SELECT * FROM user WHERE username = #{username}
     </select>
     
+    <select id="getUserByName" parameterType="String" resultMap="UserResultMap">
+        SELECT * FROM user WHERE name = #{name}
+    </select>
+    
+    
     <select id="getUserByUsernameAndPassword" parameterType="String" resultMap="UserResultMap">
 	    SELECT * FROM user WHERE username = #{username} AND password = #{password}
 	</select>
