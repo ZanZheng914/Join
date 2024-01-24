@@ -9,6 +9,8 @@
 		<result column="quantity" property="quantity"/>
 		<result column="price" property="price"/>
 		<result column="subTotal" property="subTotal"/>
+		<result column="ice" property="ice"/>
+		<result column="sugar" property="sugar"/>
 		
 	    <!-- 將 Product 相關信息映射到 CartItem 中 -->
 	    <association property="product" javaType="com.join.pojo.Product">
@@ -24,8 +26,8 @@
 	</select>
 
 	<insert id="insertCartItem" parameterType="com.join.pojo.CartItem">
-		INSERT INTO cartItem (cartId,productId,quantity,price,subTotal)
-		VALUES (#{cartId},#{productId},#{quantity},#{price},#{subTotal})
+		INSERT INTO cartItem (cartId,productId,quantity,price,subTotal,ice,sugar)
+		VALUES (#{cartId},#{productId},#{quantity},#{price},#{subTotal},#{ice},#{sugar})
 	</insert>
 	
     <update id="updateCartItem" parameterType="com.join.pojo.CartItem">
@@ -35,6 +37,8 @@
             <if test="quantity != null">quantity = #{quantity},</if>
             <if test="price != null">price = #{price},</if>
             <if test="subTotal != null">subTotal = #{subTotal},</if>
+            <if test="ice != null">ice = #{ice},</if>
+            <if test="sugar != null">sugar = #{sugar},</if>
         </set>
         WHERE cartItemId = #{cartItemId}
     </update>

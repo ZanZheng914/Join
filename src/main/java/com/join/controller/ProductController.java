@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.join.pojo.Product;
 import com.join.service.ProductService;
 
-@RequestMapping("/products")
+@RequestMapping("/product")
 @RestController
 public class ProductController {
 	//處理HTTP請求，瀏覽商品
@@ -24,13 +24,15 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	@GetMapping
+	@GetMapping("/{shopId}")
 	public Product getProductByShopId(@RequestParam Integer shopId) {
 		return productService.getProductByShopId(shopId);
 	}
 	@GetMapping
 	public List<Product> getAllProducts(){
-		return productService.getAllProducts();
+		List<Product> products = productService.getAllProducts();
+		System.out.println("products from getAllProducts"+products);
+		return products;
 	}
 	@PostMapping("/add")
 	public Product addProduct(@RequestBody Product product) {

@@ -19,11 +19,10 @@ var deliveryTimes = {
     var deliveryDateSelect = document.getElementById('deliveryDate');
     var deliveryTimeDisplay = document.getElementById('deliveryTimeDisplay');
     var shopNameElement = document.getElementById('shopName');
-    var menuImageElement = document.querySelector('.container-shop1 img');   
+    var menuImageElement = document.querySelector('.container-shop img');   
     var tableSection = document.querySelector('.tableSection');
-    var tableSection2 = document.querySelector('.tableSection2');
 
-    var ordersection = document.querySelector('.container-shop1 .col-9');
+    var ordersection = document.querySelector('.container-shop .col-9');
 
     deliveryDateSelect.addEventListener('change',function(){
         ordersection.style.display= 'block';
@@ -31,7 +30,6 @@ var deliveryTimes = {
     //如果日期選到today, 那就給我time2
         if (selectedDate === 'today3'){
             tableSection.style.display = 'table';
-            tableSection2.style.display = 'none';
         displayDeliveryTime('time2');
         }else if (selectedDate === 'tomorrow3'){
             tableSection.style.display = 'none';
@@ -61,7 +59,7 @@ var deliveryTimes = {
         } else {
             shopNameElement.textContent = '';
             menuImageElement.src = '';
-        }
+        } 
     }    
 );
 function displayDeliveryTime(selectedTime) {
