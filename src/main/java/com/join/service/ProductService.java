@@ -6,7 +6,7 @@ import com.join.pojo.Product;
 public interface ProductService {
 	
 
-	Product getProductById(Integer productId) ;
+	Product getProductByShopId(Integer shopId) ;
 	
 	List<Product> getAllProducts();
 

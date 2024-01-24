@@ -16,8 +16,8 @@ public class ProductServiceImpl implements ProductService {
     private ProductMapper productMapper;
 
     @Override
-    public Product getProductById(Integer productId) {
-        return productMapper.getProductById(productId);
+    public Product getProductByShopId(Integer shopId) {
+        return productMapper.getProductByShopId(shopId);
     }
 
     @Override

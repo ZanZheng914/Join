@@ -16,8 +16,8 @@ public interface ProductMapper {
 	@Select("SELECT * FROM product")
 	List<Product> getAllProducts();
 	
-	@Select("SELECT * FROM product WHERE productId=#{productId}")
-	Product getProductById(Integer productId);
+	@Select("SELECT * FROM product WHERE shopId=#{shopId}")
+	Product getProductByShopId(Integer shopId);
 	
 	@Insert("INSERT INTO product(shopId, productName,price) VALUES(#{shopId},#{productName},#{price})")
 	void addProduct(Product product);

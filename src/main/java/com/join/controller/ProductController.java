@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.join.pojo.Product;
@@ -23,11 +24,11 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	@GetMapping("/{productId}")
-	public Product getProductById(@PathVariable Integer productId) {
-		return productService.getProductById(productId);
+	@GetMapping
+	public Product getProductByShopId(@RequestParam Integer shopId) {
+		return productService.getProductByShopId(shopId);
 	}
-	@GetMapping("/all")
+	@GetMapping
 	public List<Product> getAllProducts(){
 		return productService.getAllProducts();
 	}

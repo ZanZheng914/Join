@@ -14,6 +14,8 @@ public class CartItem {
 	private Integer quantity;
 	private Integer price;
 	private Integer subTotal;
+	private String ice;
+	private String sugar;
 	
 	private Product product;
 }

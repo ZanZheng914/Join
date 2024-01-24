@@ -136,16 +136,12 @@ body{
     width: 95%;
     justify-content: center;
   }
-  .tableSection2{
-    width: 95%;
-    justify-content: center;
-  }
 
-  .container-shop1 .col-9{
+  .container-shop .col-9{
     display: none;
     justify-content: space-evenly;
   }
-  .container-shop1 input{
+  .container-shop input{
     width: 40px;
   }
   
