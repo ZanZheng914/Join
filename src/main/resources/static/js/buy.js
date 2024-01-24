@@ -88,7 +88,7 @@ var eighttea = {
     
     var tiktop={
         "shopName": "tiktop",
-        "menuImg": 'https://www.teatop.com.tw/upload/package_menu_b/ALL_package_menu_23K01_jzD344JnHZ.jpg',
+        "menuImg": 'https://www.teatop.com.tw/upload/package_menu_b/ALL_package_menu_24A03_XNMPzvuZSi.jpg',
         "menu":[
             {"name":"請選擇一種飲料","price": null},
             {"name":"招牌高山青","price":35},

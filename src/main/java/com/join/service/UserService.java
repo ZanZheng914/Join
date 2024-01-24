@@ -31,5 +31,5 @@ public interface UserService {
 	//根據用戶名獲取用戶
 	User getUserByUsername(String username);
 
-	
+	User getUserByName(String name);
 }

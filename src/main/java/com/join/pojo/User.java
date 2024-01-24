@@ -26,9 +26,16 @@ public class User {
 	public Integer getUserId() {
 		return userId;
 	}
+	public String getName() {
+		return name;
+	}
 
 	public String getUsername() {
 		return username;
+	}
+	
+	public String getUserByName() {
+		return name;
 	}
 	
 	public void setUsername(String username) {

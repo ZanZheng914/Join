@@ -29,6 +29,8 @@ public interface UserMapper {
 	//查詢用戶
 	User getUserById(Integer userId);
 	
+	User getUserByName(@Param("name") String name);
+	
 	User getUserByUsername(@Param("username") String username);
 
 	User getUserByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
