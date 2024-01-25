@@ -1,12 +1,14 @@
-const today3 = new Date();
-const tomorrow3 = new Date();
-tomorrow3.setDate(today3.getDate() + 1);
-const dayAfterTomorrow3 = new Date();
-dayAfterTomorrow3.setDate(today3.getDate() + 2);
+/*
+const today = new Date();
+const tomorrow = new Date();
+tomorrow.setDate(today.getDate() + 1);
+const dayAfterTomorrow = new Date();
+dayAfterTomorrow.setDate(today.getDate() + 2);
 
-document.getElementById("deliveryToday3").textContent = `今天 ${today3.toDateString()}`;
-document.getElementById("deliveryTomorrow3").textContent = `明天 ${tomorrow3.toDateString()}`;
-document.getElementById("deliverydayAfterTomorrow3").textContent = `後天 ${dayAfterTomorrow3.toDateString()}`;
+document.getElementById("deliveryToday").textContent = `今天 ${today.toDateString()}`;
+document.getElementById("deliveryTomorrow").textContent = `明天 ${tomorrow.toDateString()}`;
+document.getElementById("deliverydayAfterTomorrow").textContent = `後天 ${dayAfterTomorrow.toDateString()}`;
+*/
 
 var deliveryTimes = {
     "time1": "09:00-11:00",
@@ -21,55 +23,7 @@ var deliveryTimes = {
     var shopNameElement = document.getElementById('shopName');
     var menuImageElement = document.querySelector('.container-shop img');   
     var tableSection = document.querySelector('.tableSection');
-
     var ordersection = document.querySelector('.container-shop .col-9');
-
-    deliveryDateSelect.addEventListener('change',function(){
-        ordersection.style.display= 'block';
-    var selectedDate = deliveryDateSelect.value;
-    //如果日期選到today, 那就給我time2
-        if (selectedDate === 'today3'){
-            tableSection.style.display = 'table';
-        displayDeliveryTime('time2');
-        }else if (selectedDate === 'tomorrow3'){
-            tableSection.style.display = 'none';
-            tableSection2.style.display = 'table';
-            displayDeliveryTime('time3');
-        }else if (selectedDate === 'dayAfterTomorrow3'){
-            tableSection2.style.display = 'none';
-            tableSection.style.display = 'none';
-            displayDeliveryTime('time4');
-        }else{
-            tableSection2.style.display = 'none';
-            tableSection.style.display = 'none';
-            clearDeliveryTime();
-        }
-        if (selectedDate === 'today3') {
-            shopNameElement.textContent = eighttea.shopName;
-            menuImageElement.src = '';
-            menuImageElement.src =  eighttea.menuImg;
-        } else if (selectedDate === 'tomorrow3') {
-            shopNameElement.textContent = tiktop.shopName;
-            menuImageElement.src = '';
-            menuImageElement.src =  tiktop.menuImg;
-        } else if (selectedDate === 'dayAfterTomorrow3') {
-            shopNameElement.textContent = bigbowl.shopName;
-            menuImageElement.src = '';
-            menuImageElement.src =  bigbowl.menuImg;
-        } else {
-            shopNameElement.textContent = '';
-            menuImageElement.src = '';
-        } 
-    }    
-);
-function displayDeliveryTime(selectedTime) {
-    var deliveryTime = deliveryTimes[selectedTime];
-    deliveryTimeDisplay.textContent = `${deliveryTime}`;
-}
-
-function clearDeliveryTime() {
-    deliveryTimeDisplay.textContent = '';
-}
 
     var cart = [];
 

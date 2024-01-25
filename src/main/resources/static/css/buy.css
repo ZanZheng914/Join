@@ -22,7 +22,6 @@ body{
 .container-booking .col-2,
 .container-booking .col-6{
     font-size: large;
-    /* border: 1px black solid; */
     padding: 5px;
     border-radius: 10px ;
     margin: 0 5px;
@@ -38,7 +37,7 @@ body{
 .container-booking p{
     margin: -7px;
 }
-/* check out */
+* check out */
 .checkout-container{
     position: fixed;
     right:0px;
@@ -116,15 +115,13 @@ body{
     height: 40  px;
     float:left;
     border-radius: 5px;
-    /* border-right: 2px solid black; */
-    /* align-items: center; */
+
   }
   .total-amount{
     width:26%;
     height:40px;
     float:left;
     border-radius: 5px;
-    /* padding-top:10px; */
   }
   .checkout{
     width: 60%;
@@ -138,8 +135,12 @@ body{
   }
 
   .container-shop .col-9{
+	background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	
 
-    justify-content: space-evenly;
   }
   .container-shop input{
     width: 40px;

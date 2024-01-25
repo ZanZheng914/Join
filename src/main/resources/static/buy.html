@@ -92,9 +92,6 @@
           <option id="deliverydayAfterTomorrow3" value="dayAfterTomorrow3">後天</option>
         </select>  
       </div>
-      <div class="col-4">希望送達時間： &#20;
-        <p id="deliveryTimeDisplay"></p>
-      </div>
       <div class="col-2">
         揪團店家：&#20;
         <select id="shopSelect" onchange="updateShopInfo(this.value)"></select>
@@ -157,10 +154,29 @@
 </div>
 
 <script>
-
-	function updateShopInfo(shopId){
-		getProductByShopId(shopId);
+	
+	
+	async function updateShopInfo(shopId){
+		try{
+			const response = await axios.get(`/shops`);
+			if(response.status === 200){
+				const shops = response.data;
+				const selectedShop = shops.find(shop => shop.shopId === parseInt(shopId));
+				if(selectedShop){
+	                const shopName = selectedShop.shopName;
+					console.log('選擇的店家名稱:',shopName);
+					getProductByShopId(shopId);
+				}else{
+					console.error('error:',shopId);
+				}
+			}else{
+				console.error('請求店家資訊失敗:', response.statusText);
+			}
+		}catch(error){
+			console.error('獲取店家名稱失敗',error);
+		}
 	}
+
 	
 	async function initProductList() {
 		try{
