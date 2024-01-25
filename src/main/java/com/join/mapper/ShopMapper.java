@@ -11,6 +11,7 @@ import com.join.pojo.Shop;
 public interface ShopMapper {
 	@Select("SELECT * FROM shop")
 	List<Shop> getAllShops();
-
+	
+	@Select("SELECT * FROM shop WHERE shopId=#{shopId}")
 	Shop getShopById(Integer shopId);
 }

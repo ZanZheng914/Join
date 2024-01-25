@@ -158,13 +158,18 @@
 	
 	async function updateShopInfo(shopId){
 		try{
-			const response = await axios.get(`/shops`);
+			console.log('更新店家資訊,shopId:', shopId);
+			
+			const response = await axios.get(`/shops/${shopId}`);
 			if(response.status === 200){
-				const shops = response.data;
-				const selectedShop = shops.find(shop => shop.shopId === parseInt(shopId));
+				const selectedShop = response.data;
 				if(selectedShop){
 	                const shopName = selectedShop.shopName;
 					console.log('選擇的店家名稱:',shopName);
+					
+					const shopSelect = document.getElementById('shopSelect');
+					shopSelect.innerHTML=`<option selected>${shopName}</option>`;
+					
 					getProductByShopId(shopId);
 				}else{
 					console.error('error:',shopId);
@@ -196,7 +201,6 @@
 	
 	function generateProductOptions(products){
 		
-		console.log('生成選項:',products);
 		return products.map(product => `
 	        <tr>
 		        <td>${product.productName}</td>
