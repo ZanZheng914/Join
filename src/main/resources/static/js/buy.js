@@ -58,6 +58,10 @@
     	        console.error('獲取店家資訊失敗', error);
     	    }
     	}
+    	const menuImageUrls={
+		    '八曜和茶台中精誠門市': 'https://8yotea.com/wp-content/uploads/2023/12/ZZ06.jpg',
+		    '一沐日台中大墩店': 'https://kohi.tw/wp-content/uploads/2024/01/%E4%B8%80%E6%B2%90%E6%97%A5%E5%AE%98%E6%96%B9%E8%8F%9C%E5%96%AE2024%E6%9C%80%E6%96%B0%E5%85%AB%E6%9B%9C%E8%81%AF%E5%90%8D.jpeg',
+		}
     	
     	async function updateShopInfo(shopId) {
 
@@ -70,6 +74,10 @@
     	            if (selectedShop != null) {
     	                const shopName = selectedShop.shopName;
     	                
+    	                //依據shopName改變img菜單
+    	                const menuImage= document.getElementById('menuImage');
+    	                menuImage.src=getMenuImageUrl(shopName);
+    	                
     	            	initProductList(shopId);
     	            	
     	            } else {
@@ -80,6 +88,9 @@
     	        console.error('獲取店家名稱失敗', error);
     	    }
     	}
+   	function getMenuImageUrl(shopName){
+		   return menuImageUrls[shopName]
+	   };
 
     initShopList();
     
