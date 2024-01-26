@@ -1,14 +1,141 @@
-/*
-const today = new Date();
-const tomorrow = new Date();
-tomorrow.setDate(today.getDate() + 1);
-const dayAfterTomorrow = new Date();
-dayAfterTomorrow.setDate(today.getDate() + 2);
+   	function getUserByName(name){
+   		
+    		var xhr = new XMLHttpRequest();
+    		xhr.onreadystatechange= function(){
+    			if(xhr.readyState === XMLHttpRequest.DONE){
+    				if(xhr.status === 200){
+    					var userData = JSON.parse(xhr.responseText);
+    					updateUserInfo(userData);
+    				}else{
+    					console.log("讀取資料失敗:",xhr.statusText);
+    				}
+    			}
+    		};
+  		
+    		xhr.open("GET", `/user/name/${name}`,true);
+    		xhr.send();
+    	}
+    	function updateUserInfo(userData){   
+    	    var companyElement = document.querySelector("[data-id='company']");
+    	    var deptElement = document.querySelector("[data-id='dept']");
+    	    var emailElement = document.querySelector("[data-id='email']");
 
-document.getElementById("deliveryToday").textContent = `今天 ${today.toDateString()}`;
-document.getElementById("deliveryTomorrow").textContent = `明天 ${tomorrow.toDateString()}`;
-document.getElementById("deliverydayAfterTomorrow").textContent = `後天 ${dayAfterTomorrow.toDateString()}`;
-*/
+            companyElement.innerText = `${userData.company}`;
+            deptElement.innerText = `${userData.dept}`;
+            emailElement.innerText = `${userData.email}`;
+           
+		}
+    	
+    	async function initShopList() {
+    	    try {
+    	        const response = await axios.get('/shops');
+    	        if (response.status === 200) {
+    	            const shops = response.data;
+    	            const shopSelect = document.getElementById('shopSelect');
+    	
+    	            // 清空之前的選項
+    	            shopSelect.innerHTML = '';
+    	
+    	            // 動態生成選項
+    	            shops.forEach(shop => {
+    	                const option = document.createElement('option');
+    	                option.value = shop.shopId;
+    	                option.textContent = shop.shopName;
+    	                shopSelect.appendChild(option);
+    	            });
+    	
+    	            // 頁面載入時觸發一次
+    	            if (shops.length > 0) {
+    	                updateShopInfo(shops[0].shopId);
+    	                if (shops.length > 0 && shops[0].shopId !== undefined) {
+    	                    initProductList(shops[0].shopId);
+    	                }
+    	            }
+    	        } else {
+    	            console.error('回應店家資訊失敗:', response.statusText);
+    	        }
+    	    } catch (error) {
+    	        console.error('獲取店家資訊失敗', error);
+    	    }
+    	}
+    	
+    	async function updateShopInfo(shopId) {
+
+    	    try {
+       	        const response = await axios.get(`/shops/${shopId}`);
+    	       
+    	        if (response.status === 200) {
+    	            const selectedShop = response.data;
+
+    	            if (selectedShop != null) {
+    	                const shopName = selectedShop.shopName;
+    	                
+    	            	initProductList(shopId);
+    	            	
+    	            } else {
+    	                console.error('error:', shopId);
+    	         	   }
+    	        	}    	        
+    	   	 } catch (error) {
+    	        console.error('獲取店家名稱失敗', error);
+    	    }
+    	}
+
+    initShopList();
+    
+	async function initProductList(shopId) {
+		try{
+			console.log("initProduct時:",shopId);
+			const response = await axios.get(`/product/${shopId}`);
+			if(response.status === 200){
+				const products = response.data;
+			    const productSelect = document.getElementById('productList');
+			    const productOptions = generateProductOptions(products);			    
+			    productSelect.innerHTML = productOptions;				
+			}else{
+				console.error('獲取商品資料失敗（response):',response.statusText);
+			}			
+		}catch(error){
+			console.error('獲取商品資料失敗,catch:', error);
+		}			
+	}
+	
+	function generateProductOptions(products){
+		
+		return products.map(product => `
+	        <tr>
+		        <td>${product.productName}</td>
+		        <td>${product.price}</td>
+		        <td>
+		            <select class="ice" name="ice">
+		                <option value="正常冰">正常冰</option>
+		                <option value="少冰">少冰</option>
+		                <option value="去冰">去冰</option>
+		            </select>
+		        </td>
+		        <td>
+		            <select class="sugar" name="sugar">
+		                <option value="正常糖">正常糖</option>
+		                <option value="少糖">少糖</option>
+		                <option value="無糖">無糖</option>
+		            </select>
+		        </td>
+		        <td>
+		            <input type="number" class="quantity" name="quantity" min="0" max="99" value="1">
+		        </td>
+		        <td>
+		            <button class="add-to-cart" 
+		                    data-product-id="${product.productId}" 
+		                    data-product-name="${product.productName}" 
+		                    data-price="${product.price}">
+	                    添加到購物車
+		            </button>
+		        </td>
+		    </tr>
+		`).join('');
+	}
+	
+
 
 var deliveryTimes = {
     "time1": "09:00-11:00",
@@ -17,14 +144,8 @@ var deliveryTimes = {
     "time4": "15:00-17:00",
     "time5": "17:00-19:00",
     "time6": "19:00-21:00"
-};
-/*    var deliveryDateSelect = document.getElementById('deliveryDate');
-    var deliveryTimeDisplay = document.getElementById('deliveryTimeDisplay');
-    var shopNameElement = document.getElementById('shopName');
-    var menuImageElement = document.querySelector('.container-shop img');   
-    var tableSection = document.querySelector('.tableSection');
-    var ordersection = document.querySelector('.container-shop .col-9');
-*/
+    }
+
     var cart = [];
 
     $('.add-to-cart').click(function(){
