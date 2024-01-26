@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.join.pojo.Cart;
+import com.join.pojo.CartItem;
 import com.join.service.CartService;
 
 @RequestMapping("/cart")
@@ -28,9 +29,9 @@ public class CartController {
 	public Cart getCartById(@PathVariable Integer cartId) {
 		return cartService.getCartbyId(cartId);
 	}
-	@PostMapping("/create")
-	public void createCart(@RequestBody Cart cart) {
-		cartService.insertCart(cart);
+	@PostMapping("/add-to-cart")
+	public void addToCart(@RequestBody CartItem cartItem) {
+		cartService.addToCart(cartItem);
 	}
 	@PutMapping("/update")
 	public void updateCart(@RequestBody Cart cart) {

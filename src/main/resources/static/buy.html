@@ -102,17 +102,24 @@
 <!-- Check out Cart-->
 <div class="checkout-container col-3">
   <div class="table">
-    <div class="col1-productName"></div>
-    <div class="col2-price"></div>
-    <div class="col3-ice"></div>
-    <div class="col4-sugar"></div>
-    <div class="col5-quantity"></div>
+  	<div class="column">
+	    <div class="col1-productName"></div>
+	    <div class="col2-price"></div>
+	    <div class="col3-ice"></div>
+	    <div class="col4-sugar"></div>
+	    <div class="col5-quantity"></div>
+	    <div class="col6-subTotal"></div>
+	    <div class="col7-total"></div>
+    </div>
+    <!-- Cart Items產生在table內 -->
   </div>
+  
   <div>
     <a class="cart" title="Your Cart" id="cart">
       <img src="../images/cart.png" style="width: 50px;height: 50px;cursor: pointer;"/>
       <span class="empty" id="count-item" data-count="0">0 item</span>
-    </a><div class="cleancart remove"><span>清除購物車</span><img id="cleancart" src="../images/delete.png" style="width: 45px;cursor: pointer;"></div>
+    </a>
+    <div class="cleancart remove"><span>清除購物車</span><img id="cleancart" src="../images/delete.png" style="width: 45px;cursor: pointer;"></div>
   </div>
   <div class="total">
     <div class="total-text">Total：</div>

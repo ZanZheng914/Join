@@ -157,71 +157,57 @@ var deliveryTimes = {
     "time6": "19:00-21:00"
     }
 
-    var cart = [];
+class ShoppingCart{
+	constructor(){
+		this.items= [];
+	}
+	
+	addItem(productName,price,quantity,ice,sugar,productId){
+		if(quantity>0){
+			const item ={
+				productName,price,ice,sugar,quantity,productId,
+				total: price * quantity
+			};
+			this.items.push(item);
+			this.updateCart();
+		}else{
+			alert("請輸入正確的數量");
+		}
+	}
+	
+	clearCart(){
+		this.items=[];
+		this.updateCart();
+	}
+	updateCart(){
+		
+	}
+	
+	
+}
 
-    $('.add-to-cart').click(function(){
-        var productName = $(this).data('product-name');
-        var price = $(this).data('price');
-        var quantity = parseInt($(this).closest('tr').find('.quantity').val());
-        var ice = $(this).closest('tr').find('.ice').val();
-        var sugar = $(this).closest('tr').find('.sugar').val();
-    
-        if(quantity > 0){
-            var item = {
-                productName: productName,
-                price: price,
-                ice: ice,
-                sugar: sugar,
-                quantity: quantity,
-                total: price * quantity
-            };
-            cart.push(item);
-            updateCart();
-        } else {
-            alert("請輸入正確的數量");
-        };
+const shoppingCart= new ShoppingCart();
 
-    $('#cleancart').click(function(){
-        cart = [];
-        updateCart();
-    });
-});
-    
-    function updateCart(){
-        var totalItems = 0;
-        var totalPrice = 0;
-        $('.table').empty();
+document.querySelectorAll('.add-to-cart').forEach((button)=>{
+	button.addEventListener('click',function(){
+		const productName = this.getAttribute('data-product-name');
+		const price=parseFloat(this.getAttribute('data-price'));
+		const quantity = parseInt(this.closest('tr').querySelector('.quantity').value);
+		const ice = this.closest('tr').querySelector('.ice').value;
+		const sugar =  this.closest('tr').querySelector('.sugar').value;
+		const productId = parseInt(this.getAttribut('data-product-id'));
+		
+		shoppingCart.addItem(productName,price,quantity,sugar,productId);
+	})
+})
 
-        var header = '<div class="column">';
-        header += '<div class="col1-productName">品名</div>';
-        header += '<div class="col2-price">價格</div>';
-        header += '<div class="col3-ice">冰塊</div>';
-        header += '<div class="col4-sugar">糖量</div>';
-        header += '<div class="col5-quantity">數量</div>';
-        header += '</div>';
-        $('.table').append(header);
-    
-        cart.forEach(function(item){
-            totalItems += item.quantity;
-            totalPrice += item.price * item.quantity;
-            
-            var column = '<div class="column">';
-            column += '<div class="col1-productName">' + item.productName + '</div>';
-            column += '<div class="col2-price">$' + item.price + '</div>';
-            column += '<div class="col3-ice">' + item.ice + '</div>';
-            column += '<div class="col4-sugar">' + item.sugar + '</div>';
-            column += '<div class="col5-quantity">' + item.quantity + '</div>';
-            column += '</div>';
-            $('.table').append(column);
-            $('.table').append('<br>');
-        });
-    
-        $('#count-item').text(totalItems + ' item');
-        $('#total-price').text(totalPrice);
-    }   
+document.getElementById('cleancart').addEventListener('click',function(){
+	shoppingCart.clearCart();
+})
 
-    let CartVisible = false;
-
+/*
+	let CartVisible = false;
+	
 document.getElementById('cart').addEventListener('click',function(){
     const carttable = document.querySelector('.table');
     const cleancart = document.querySelector('.cleancart');
@@ -238,6 +224,7 @@ document.getElementById('cart').addEventListener('click',function(){
     }
     CartVisible = !CartVisible;
 });
+*/
 
 function checkout(){
     Swal.fire({

@@ -1,5 +1,8 @@
 package com.join.service.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +39,21 @@ public class CartItemServiceImpl implements CartItemService{
 	public void deleteCartItem(Integer cartItemId) {
 		cartItemMapper.deleteCartItem(cartItemId);
 	}
-	
+	@Override
+	public void addToCart(CartItem cartItem) {
+		//如果user已經有cart item時，只需要更新數量等內容
+		CartItem existingCartItem = cartItemMapper.getCartItemByProductIdAndUserId(cartItem.getProductId(),cartItem.getUserId());
+		if(existingCartItem != null) {
+			existingCartItem.setQuantity(existingCartItem.getQuantity()+cartItem.getQuantity());
+			existingCartItem.setSubTotal(existingCartItem.getPrice()*existingCartItem.getQuantity());
+			updateCartItem(existingCartItem);
+		}else {
+			insertCartItem(cartItem);
+		}	
+	}
+
+	@Override
+	public CartItem getCartItemByProductIdAndUserId(Integer productId, Integer userId) {
+        return cartItemMapper.getCartItemByProductIdAndUserId(productId,userId);
+	}
 }

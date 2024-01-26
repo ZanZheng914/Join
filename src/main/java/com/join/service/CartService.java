@@ -1,6 +1,7 @@
 package com.join.service;
 
 import com.join.pojo.Cart;
+import com.join.pojo.CartItem;
 
 public interface CartService {
 	
@@ -14,4 +15,6 @@ public interface CartService {
 	public void deleteCart(Integer cartId);
 	
 	public Integer getTotalPrice(Integer cartId);
+
+	public void addToCart(CartItem cartItem);
 }

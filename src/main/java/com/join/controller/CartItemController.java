@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.join.pojo.CartItem;
@@ -26,8 +27,8 @@ public class CartItemController {
 	public CartItem getCartItemById(@PathVariable Integer cartItemId) {
 		return cartItemService.getCartItemById(cartItemId);
 	}
-	@PostMapping("/create")
-	public void createCartItem(@RequestBody CartItem cartItem) {
+	@PostMapping("/add-to-cart")
+	public void addToCart(@RequestBody CartItem cartItem) {
 		cartItemService.insertCartItem(cartItem);
 	}
 	@PutMapping("/update")
@@ -38,5 +39,10 @@ public class CartItemController {
 	public void deleteCartItem(@PathVariable Integer cartItemId) {
 		cartItemService.deleteCartItem(cartItemId);
 	}
+	
+    @GetMapping("/getCartItemByProductIdAndUserId")
+    public CartItem getCartItemByProductIdAndUserId(@RequestParam Integer productId, @RequestParam Integer userId) {
+        return cartItemService.getCartItemByProductIdAndUserId(productId, userId);
+    }
 	
 }

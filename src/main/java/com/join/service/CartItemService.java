@@ -11,8 +11,10 @@ public interface CartItemService {
     void updateCartItem(CartItem cartItem);
 
     void deleteCartItem(Integer cartItemId);
+
+	void addToCart(CartItem cartItem);
 	
-	
+    CartItem getCartItemByProductIdAndUserId(Integer productId, Integer userId);
 	
 	
 }

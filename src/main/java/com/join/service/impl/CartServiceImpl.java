@@ -5,15 +5,19 @@ import org.springframework.stereotype.Service;
 
 import com.join.mapper.CartMapper;
 import com.join.pojo.Cart;
+import com.join.pojo.CartItem;
+import com.join.service.CartItemService;
 import com.join.service.CartService;
 
 @Service
 public class CartServiceImpl implements CartService {
     private final CartMapper cartMapper;
+    private final CartItemService cartItemService;
 
     @Autowired
-    public CartServiceImpl(CartMapper cartMapper) {
+    public CartServiceImpl(CartMapper cartMapper, CartItemService cartItemService) {
         this.cartMapper = cartMapper;
+		this.cartItemService = cartItemService;
     }
 
     @Override
@@ -39,6 +43,11 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public Integer getTotalPrice(Integer cartId) {
 		return cartMapper.getTotalPrice(cartId);
+	}
+
+	@Override
+	public void addToCart(CartItem cartItem) {
+		cartItemService.addToCart(cartItem);
 	}
 
 }
