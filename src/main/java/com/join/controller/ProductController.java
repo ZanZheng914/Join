@@ -25,7 +25,7 @@ public class ProductController {
 	private ProductService productService;
 	
 	@GetMapping("/{shopId}")
-	public Product getProductByShopId(@RequestParam Integer shopId) {
+	public List<Product> getProductByShopId(@PathVariable	 Integer shopId) {
 		return productService.getProductByShopId(shopId);
 	}
 	@GetMapping
