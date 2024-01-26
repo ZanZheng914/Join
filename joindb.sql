@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost:8889
--- 產生時間： 2024 年 01 月 23 日 08:55
+-- 產生時間： 2024 年 01 月 26 日 02:11
 -- 伺服器版本： 5.7.39
 -- PHP 版本： 7.4.33
 
@@ -87,7 +87,7 @@ CREATE TABLE `orders` (
 CREATE TABLE `product` (
   `productid` int(11) NOT NULL,
   `shopid` int(11) NOT NULL,
-  `product` varchar(255) NOT NULL,
+  `productName` varchar(255) NOT NULL,
   `price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -95,7 +95,7 @@ CREATE TABLE `product` (
 -- 傾印資料表的資料 `product`
 --
 
-INSERT INTO `product` (`productid`, `shopid`, `product`, `price`) VALUES
+INSERT INTO `product` (`productid`, `shopid`, `productName`, `price`) VALUES
 (1, 1, '八曜和茶', 35),
 (2, 1, '極上307', 37),
 (3, 1, '406紅茶', 46),
@@ -120,7 +120,7 @@ INSERT INTO `product` (`productid`, `shopid`, `product`, `price`) VALUES
 --
 
 CREATE TABLE `shop` (
-  `shopid` int(11) NOT NULL,
+  `shopId` int(11) NOT NULL,
   `shopName` varchar(255) NOT NULL,
   `tel` varchar(20) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
@@ -131,7 +131,7 @@ CREATE TABLE `shop` (
 -- 傾印資料表的資料 `shop`
 --
 
-INSERT INTO `shop` (`shopid`, `shopName`, `tel`, `address`, `joinTime`) VALUES
+INSERT INTO `shop` (`shopId`, `shopName`, `tel`, `address`, `joinTime`) VALUES
 (1, '八曜和茶台中精誠門市', '0422667788', '台中市西區精誠路25號', '2024-01-01'),
 (2, '一沐日台中大墩店', '04-28825252', '台中市南屯區大墩十一街294號', '2024-01-01');
 
@@ -146,10 +146,10 @@ CREATE TABLE `user` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `gender` smallint(6) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `gender` smallint(6) NOT NULL,
   `company` varchar(255) NOT NULL,
-  `dept` varchar(255) DEFAULT NULL,
+  `dept` varchar(255) NOT NULL,
   `createTime` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -160,7 +160,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`userid`, `username`, `password`, `name`, `email`, `gender`, `company`, `dept`, `createTime`) VALUES
 (1, 'user', 'user', '皮卡丘', 'user@mail.com', 1, '台積電竹科廠', '人資部', '2024-01-02'),
 (2, 'user2', '$2a$10$n3nkjK/sreQ8Y/VqN6uZm.sBsR4qR74LJtY5rdT0OAHbhCYSulQzi', 'user2', 'user2@mail.com', 1, '測試公司', '測試部', '2024-01-04'),
-(3, 'user3', '$2a$10$LoDWm1cU/Jj61jmaoNz9oOIldIefSSPHMm5AvDNOiGtiAJG6AtL/K', 'user3', 'user3@mail.com', 1, 'UU', 'EE', '2024-01-23');
+(3, 'user3', '$2a$10$LoDWm1cU/Jj61jmaoNz9oOIldIefSSPHMm5AvDNOiGtiAJG6AtL/K', 'user3', 'user3@mail.com', 1, 'UU', 'EE', '2024-01-23'),
+(4, 'eeee', '$2a$10$U91DEdPAXi4LcbTeAMLWCOVC5MP5cEV9zQgFPsUQP90xLNVzhgkK.', '4個e', 'ee@gaj.com', 1, 'IU', 'OwO', '2024-01-24');
 
 --
 -- 已傾印資料表的索引
@@ -207,7 +208,7 @@ ALTER TABLE `product`
 -- 資料表索引 `shop`
 --
 ALTER TABLE `shop`
-  ADD PRIMARY KEY (`shopid`);
+  ADD PRIMARY KEY (`shopId`);
 
 --
 -- 資料表索引 `user`
@@ -253,13 +254,13 @@ ALTER TABLE `product`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `shop`
 --
 ALTER TABLE `shop`
-  MODIFY `shopid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `shopId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user`
 --
 ALTER TABLE `user`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- 已傾印資料表的限制式
@@ -295,7 +296,7 @@ ALTER TABLE `orders`
 -- 資料表的限制式 `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`shopid`) REFERENCES `shop` (`shopid`);
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`shopid`) REFERENCES `shop` (`shopId`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -40,6 +40,62 @@
             emailElement.innerText = `${userData.email}`;
            
 		}
+    	
+    	async function initShopList() {
+    	    try {
+    	        const response = await axios.get('/shops');
+    	        if (response.status === 200) {
+    	            const shops = response.data;
+    	            const shopSelect = document.getElementById('shopSelect');
+    	
+    	            // 清空之前的選項
+    	            shopSelect.innerHTML = '';
+    	
+    	            // 動態生成選項
+    	            shops.forEach(shop => {
+    	                const option = document.createElement('option');
+    	                option.value = shop.shopId;
+    	                option.textContent = shop.shopName;
+    	                shopSelect.appendChild(option);
+    	            });
+    	
+    	            // 頁面載入時觸發一次
+    	            if (shops.length > 0) {
+    	                updateShopInfo(shops[0].shopId);
+    	            }
+    	        } else {
+    	            console.error('回應店家資訊失敗:', response.statusText);
+    	        }
+    	    } catch (error) {
+    	        console.error('獲取店家資訊失敗', error);
+    	    }
+    	}
+    	
+    	async function updateShopInfo(shopId) {
+    	    try {
+    	        console.log('更新店家資訊, shopId:', shopId);
+    	        
+    	        const response = await axios.get(`/shops/${shopId}`);
+    	       
+    	        if (response.status === 200) {
+    	            const selectedShop = response.data;
+
+    	            if (selectedShop) {
+    	                const shopName = selectedShop.shopName;
+    	                console.log('選擇的店家名稱:', shopName);
+
+    	            } else {
+    	                console.error('error:', shopId);
+    	            }
+    	        } else {
+    	            console.error('請求店家資訊失敗:', response.statusText);
+    	        }
+    	    } catch (error) {
+    	        console.error('獲取店家名稱失敗', error);
+    	    }
+    	}
+
+    initShopList();
 
     </script>
 </head>
@@ -87,9 +143,9 @@
       <div class="col-4">2️⃣&nbsp;&nbsp;送餐日期
         <select class="date-select"id="deliveryDate">
           <option selected>請點選送餐日期</option>
-          <option id="deliveryToday3" value='today3'>今天</option>
-          <option id="deliveryTomorrow3" value='tomorrow3'>明天</option>
-          <option id="deliverydayAfterTomorrow3" value="dayAfterTomorrow3">後天</option>
+          <option id="deliveryToday" value='today'>今天</option>
+          <option id="deliveryTomorrow" value='tomorrow'>明天</option>
+          <option id="deliverydayAfterTomorrow" value="dayAfterTomorrow">後天</option>
         </select>  
       </div>
       <div class="col-2">
@@ -132,7 +188,7 @@
 <!-- Check out Cart-->
 <div class="checkout-container col-3">
   <div class="table">
-    <div class="col1-priductName"></div>
+    <div class="col1-productName"></div>
     <div class="col2-price"></div>
     <div class="col3-ice"></div>
     <div class="col4-sugar"></div>
@@ -154,33 +210,8 @@
 </div>
 
 <script>
-	
-	
-	async function updateShopInfo(shopId){
-		try{
-			console.log('更新店家資訊,shopId:', shopId);
-			
-			const response = await axios.get(`/shops/${shopId}`);
-			if(response.status === 200){
-				const selectedShop = response.data;
-				if(selectedShop){
-	                const shopName = selectedShop.shopName;
-					console.log('選擇的店家名稱:',shopName);
-					
-					const shopSelect = document.getElementById('shopSelect');
-					shopSelect.innerHTML=`<option selected>${shopName}</option>`;
-					
-					getProductByShopId(shopId);
-				}else{
-					console.error('error:',shopId);
-				}
-			}else{
-				console.error('請求店家資訊失敗:', response.statusText);
-			}
-		}catch(error){
-			console.error('獲取店家名稱失敗',error);
-		}
-	}
+		
+
 
 	
 	async function initProductList() {
@@ -253,7 +284,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 <script src="../js/buy.js"></script>
-<script src="../js/users.js"></script>
     </body>
 
 </html>

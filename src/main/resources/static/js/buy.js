@@ -18,17 +18,17 @@ var deliveryTimes = {
     "time5": "17:00-19:00",
     "time6": "19:00-21:00"
 };
-    var deliveryDateSelect = document.getElementById('deliveryDate');
+/*    var deliveryDateSelect = document.getElementById('deliveryDate');
     var deliveryTimeDisplay = document.getElementById('deliveryTimeDisplay');
     var shopNameElement = document.getElementById('shopName');
     var menuImageElement = document.querySelector('.container-shop img');   
     var tableSection = document.querySelector('.tableSection');
     var ordersection = document.querySelector('.container-shop .col-9');
-
+*/
     var cart = [];
 
     $('.add-to-cart').click(function(){
-        var productName = $(this).data('productName');
+        var productName = $(this).data('product-name');
         var price = $(this).data('price');
         var quantity = parseInt($(this).closest('tr').find('.quantity').val());
         var ice = $(this).closest('tr').find('.ice').val();
@@ -61,7 +61,7 @@ var deliveryTimes = {
         $('.table').empty();
 
         var header = '<div class="column">';
-        header += '<div class="col1-priductName">品名</div>';
+        header += '<div class="col1-productName">品名</div>';
         header += '<div class="col2-price">價格</div>';
         header += '<div class="col3-ice">冰塊</div>';
         header += '<div class="col4-sugar">糖量</div>';
@@ -74,7 +74,7 @@ var deliveryTimes = {
             totalPrice += item.price * item.quantity;
             
             var column = '<div class="column">';
-            column += '<div class="col1-priductName">' + item.priductName + '</div>';
+            column += '<div class="col1-productName">' + item.productName + '</div>';
             column += '<div class="col2-price">$' + item.price + '</div>';
             column += '<div class="col3-ice">' + item.ice + '</div>';
             column += '<div class="col4-sugar">' + item.sugar + '</div>';
