@@ -96,7 +96,6 @@
     
 	async function initProductList(shopId) {
 		try{
-			console.log("initProduct時:",shopId);
 			const response = await axios.get(`/product/${shopId}`);
 			if(response.status === 200){
 				const products = response.data;
@@ -115,8 +114,8 @@
 		
 		return products.map(product => `
 	        <tr>
-		        <td>${product.productName}</td>
-		        <td>${product.price}</td>
+		        <td data-product-name="${product.productName}">${product.productName}</td>
+		        <td data-price="${product.price}">${product.price}</td>
 		        <td>
 		            <select class="ice" name="ice">
 		                <option value="正常冰">正常冰</option>
@@ -228,18 +227,27 @@ class ShoppingCart{
 
 const shoppingCart= new ShoppingCart();
 
+document.addEventListener('DOMContentLoaded',function(){
+
 document.querySelectorAll('.add-to-cart').forEach((button)=>{
-	button.addEventListener('click',function(){
-		const productName = this.getAttribute('data-product-name');
-		const price=parseFloat(this.getAttribute('data-price'));
-		const ice = this.closest('tr').querySelector('.ice').value;
-		const sugar =  this.closest('tr').querySelector('.sugar').value;
-		const quantity = parseInt(this.closest('tr').querySelector('.quantity').value);
-		const productId = parseInt(this.getAttribute('data-product-id'));
+	button.addEventListener('click',function(event){
+		console.log('Button clicked');
+
+	    const trElement = event.target.closest('tr');
+	    
+	    const productName = trElement.querySelector('[data-product-name]').getAttribute('data-product-name');
+	    const price = parseFloat(trElement.querySelector('[data-price]').getAttribute('data-price'));
+	    const ice = trElement.querySelector('.ice').value;
+	    const sugar = trElement.querySelector('.sugar').value;
+	    const quantity = parseInt(trElement.querySelector('.quantity').value);
+	    const productId = parseInt(trElement.querySelector('[data-product-id]').getAttribute('data-product-id'));
+		
+		console.log('在購物車內呼叫:',productName, price, ice, sugar, quantity, productId);
+
 		
 		shoppingCart.addItem(productName,price,ice,sugar,quantity,productId);
 		
-		axios.post('/cartItem/add-to-cart',{
+/*		axios.post('/cartItem/add-to-cart',{
 			productName: productName,
 			price: price,
 			ice: ice,
@@ -253,12 +261,16 @@ document.querySelectorAll('.add-to-cart').forEach((button)=>{
 		.catch(error=>{
 			console.log(error);
 		})
+		*/
+		})
 	})
-})
+		document.getElementById('cleancart').addEventListener('click',function(){
+			console.log('Clearing Cart');
+			shoppingCart.clearCart();
+		})
+});
 
-document.getElementById('cleancart').addEventListener('click',function(){
-	shoppingCart.clearCart();
-})
+
 
 
 	let CartVisible = false;
