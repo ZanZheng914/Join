@@ -29,6 +29,7 @@ public class CartItemController {
 	}
 	@PostMapping("/add-to-cart")
 	public void addToCart(@RequestBody CartItem cartItem) {
+		System.out.println("收到add to cart請求:"+ cartItem);
 		cartItemService.insertCartItem(cartItem);
 	}
 	@PutMapping("/update")

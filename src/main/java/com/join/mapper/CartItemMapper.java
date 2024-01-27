@@ -16,7 +16,5 @@ public interface CartItemMapper {
 	void deleteCartItem(@Param("cartItemId") Integer cartItemId);
 
 	CartItem getCartItemByProductIdAndUserId(@Param("productId")Integer productId,@Param("userId") Integer userId);
-	
-	
-	
+
 }

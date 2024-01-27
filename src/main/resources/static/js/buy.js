@@ -132,7 +132,7 @@
 		            </select>
 		        </td>
 		        <td>
-		            <input type="number" class="quantity" name="quantity" min="0" max="99" value="1">
+		            <input type="number" class="quantity" name="quantity" min="0" max="99" value="0">
 		        </td>
 		        <td>
 		            <button class="add-to-cart" 
@@ -162,7 +162,9 @@ class ShoppingCart{
 		this.items= [];
 	}
 	
-	addItem(productName,price,quantity,ice,sugar,productId){
+	addItem(productName,price,ice,sugar,quantity,productId){
+		console.log('AddItem:',productName,price,ice,sugar,quantity,productId)
+		
 		if(quantity>0){
 			const item ={
 				productName,price,ice,sugar,quantity,productId,
@@ -180,6 +182,44 @@ class ShoppingCart{
 		this.updateCart();
 	}
 	updateCart(){
+		const cartTable = document.querySelector('.table');
+		  cartTable.innerHTML = ''; // 清空表格
+
+		  const header = `
+		    <div class="column">
+		      <div class="col1-name">品名</div>
+		      <div class="col2-price">價格</div>
+		      <div class="col3-ice">冰塊</div>
+		      <div class="col4-sugar">糖量</div>
+		      <div class="col5-quantity">數量</div>
+		      <div class="col6-subTotal">小計</div>
+		    </div>
+		  `;
+		  cartTable.insertAdjacentHTML('beforeend', header);
+		
+		let totalPrice = 0;
+		
+		  this.items.forEach(item => {
+			  const subTotal = item.price * item.quantity;
+			totalPrice +=subTotal;
+					  
+		    const column = `
+		      <div class="column">
+		        <div class="col1-name">${item.productName}</div>
+		        <div class="col2-price">${item.price}</div>
+		        <div class="col3-ice">${item.ice}</div>
+		        <div class="col4-sugar">${item.sugar}</div>
+		        <div class="col5-quantity">${item.quantity}</div>
+		        <div class="col6-subTotal">${subTotal.toFixed(0)}</div>
+		      </div>
+		    `;
+		    cartTable.insertAdjacentHTML('beforeend', column);
+		  });
+		
+		  // 更新total
+		  const totalItems = this.items.reduce((total, item) => total + item.quantity, 0);
+		  document.getElementById('count-item').textContent = totalItems + ' item';
+		  document.getElementById('total-price').textContent = totalPrice.toFixed(0);
 		
 	}
 	
@@ -192,12 +232,27 @@ document.querySelectorAll('.add-to-cart').forEach((button)=>{
 	button.addEventListener('click',function(){
 		const productName = this.getAttribute('data-product-name');
 		const price=parseFloat(this.getAttribute('data-price'));
-		const quantity = parseInt(this.closest('tr').querySelector('.quantity').value);
 		const ice = this.closest('tr').querySelector('.ice').value;
 		const sugar =  this.closest('tr').querySelector('.sugar').value;
-		const productId = parseInt(this.getAttribut('data-product-id'));
+		const quantity = parseInt(this.closest('tr').querySelector('.quantity').value);
+		const productId = parseInt(this.getAttribute('data-product-id'));
 		
-		shoppingCart.addItem(productName,price,quantity,sugar,productId);
+		shoppingCart.addItem(productName,price,ice,sugar,quantity,productId);
+		
+		axios.post('/cartItem/add-to-cart',{
+			productName: productName,
+			price: price,
+			ice: ice,
+			sugar: sugar,
+			quantity: quantity,
+			productId: productId
+		})
+		.then(response=>{
+			console.log(response);
+		})
+		.catch(error=>{
+			console.log(error);
+		})
 	})
 })
 
@@ -205,26 +260,26 @@ document.getElementById('cleancart').addEventListener('click',function(){
 	shoppingCart.clearCart();
 })
 
-/*
+
 	let CartVisible = false;
 	
 document.getElementById('cart').addEventListener('click',function(){
-    const carttable = document.querySelector('.table');
+    const cartTable = document.querySelector('.table');
     const cleancart = document.querySelector('.cleancart');
     const checkout = document.querySelector('.checkout');
 
     if(CartVisible){
-        carttable.style.display = 'none';
+        cartTable.style.display = 'none';
         cleancart.style.display = 'none';
         checkout.style.display = 'none';
     }else{
-        carttable.style.display = 'block';
+        cartTable.style.display = 'block';
         cleancart.style.display = 'block';
         checkout.style.display = 'block';
     }
     CartVisible = !CartVisible;
 });
-*/
+
 
 function checkout(){
     Swal.fire({
