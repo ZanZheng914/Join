@@ -25,7 +25,7 @@
 		SELECT * FROM cartItem WHERE cartItemId=#{cartItemId}
 	</select>
 	
-    <select id="getCartItemByProductIdAndUserId" parameterType="map" resultMap="cartItemIdResultMap">
+    <select id="getCartItemByProductIdAndUserId" parameterType="com.join.pojo.CartItem" resultMap="cartItemIdResultMap">
         SELECT * FROM cartItem 
         WHERE productId = #{productId}
         AND userId = #{userId}

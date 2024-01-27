@@ -3,6 +3,7 @@ package com.join.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.join.mapper.CartItemMapper;
 import com.join.mapper.CartMapper;
 import com.join.pojo.Cart;
 import com.join.pojo.CartItem;
@@ -12,12 +13,12 @@ import com.join.service.CartService;
 @Service
 public class CartServiceImpl implements CartService {
     private final CartMapper cartMapper;
-    private final CartItemService cartItemService;
+    private final CartItemMapper cartItemMapper;
 
     @Autowired
-    public CartServiceImpl(CartMapper cartMapper, CartItemService cartItemService) {
+    public CartServiceImpl(CartMapper cartMapper, CartItemMapper cartItemMapper) {
         this.cartMapper = cartMapper;
-		this.cartItemService = cartItemService;
+		this.cartItemMapper = cartItemMapper;
     }
 
     @Override
@@ -47,7 +48,7 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public void addToCart(CartItem cartItem) {
-		cartItemService.addToCart(cartItem);
+		cartItemMapper.insertCartItem(cartItem);
 	}
 
 }
