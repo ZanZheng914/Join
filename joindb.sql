@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.2
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost:8889
--- 產生時間： 2024 年 01 月 26 日 08:00
--- 伺服器版本： 5.7.39
--- PHP 版本： 7.4.33
+-- 產生時間： 2024-01-28 14:09:12
+-- 伺服器版本： 5.7.24
+-- PHP 版本： 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫： `joindb`
+-- 資料庫: `joindb`
 --
 
 -- --------------------------------------------------------
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cart` (
   `cartid` int(11) NOT NULL,
-  `userid` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
   `totalPrice` int(11) NOT NULL,
   `createTime` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -37,12 +37,13 @@ CREATE TABLE `cart` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `cartItem`
+-- 資料表結構 `cartitem`
 --
 
-CREATE TABLE `cartItem` (
+CREATE TABLE `cartitem` (
   `cartItemId` int(11) NOT NULL,
   `cartId` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
   `productId` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL,
@@ -52,10 +53,10 @@ CREATE TABLE `cartItem` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `orderItem`
+-- 資料表結構 `orderitem`
 --
 
-CREATE TABLE `orderItem` (
+CREATE TABLE `orderitem` (
   `orderItemId` int(11) NOT NULL,
   `orderId` int(11) NOT NULL,
   `productId` int(11) NOT NULL,
@@ -111,7 +112,19 @@ INSERT INTO `product` (`productid`, `shopid`, `productName`, `price`) VALUES
 (13, 2, '桂花蕎麥茶', 55),
 (14, 2, '柚子烏龍', 65),
 (15, 2, '粉粿舞伎406奶茶', 79),
-(16, 2, '極黑芝麻拿鐵', 80);
+(16, 2, '極黑芝麻拿鐵', 80),
+(17, 3, 'Latte', 135),
+(18, 3, 'Cappuccino', 135),
+(19, 3, '美式咖啡', 110),
+(20, 3, '摩卡', 150),
+(21, 3, '焦糖瑪奇朵', 155),
+(22, 3, '熱巧克力', 150),
+(23, 3, '鹹焦糖冷萃咖啡', 185),
+(24, 3, '氮氣冷萃咖啡', 170),
+(25, 3, '醇濃抹茶那堤', 150),
+(26, 3, '蜜柚紅茶', 140),
+(27, 3, '冰搖檸檬茶', 120),
+(28, 3, '焦糖可可碎片', 165);
 
 -- --------------------------------------------------------
 
@@ -133,7 +146,8 @@ CREATE TABLE `shop` (
 
 INSERT INTO `shop` (`shopId`, `shopName`, `tel`, `address`, `joinTime`) VALUES
 (1, '八曜和茶台中精誠門市', '0422667788', '台中市西區精誠路25號', '2024-01-01'),
-(2, '一沐日台中大墩店', '0428825252', '台中市南屯區大墩十一街294號', '2024-01-01');
+(2, '一沐日台中大墩店', '0428825252', '台中市南屯區大墩十一街294號', '2024-01-01'),
+(3, '星巴克向心門市', '0424714033', '台中市南屯區文心路一段197號', '2024-01-01');
 
 -- --------------------------------------------------------
 
@@ -161,7 +175,8 @@ INSERT INTO `user` (`userid`, `username`, `password`, `name`, `email`, `gender`,
 (1, 'user', 'user', '皮卡丘', 'user@mail.com', 1, '台積電竹科廠', '人資部', '2024-01-02'),
 (2, 'user2', '$2a$10$n3nkjK/sreQ8Y/VqN6uZm.sBsR4qR74LJtY5rdT0OAHbhCYSulQzi', 'user2', 'user2@mail.com', 1, '測試公司', '測試部', '2024-01-04'),
 (3, 'user3', '$2a$10$LoDWm1cU/Jj61jmaoNz9oOIldIefSSPHMm5AvDNOiGtiAJG6AtL/K', 'user3', 'user3@mail.com', 1, 'UU', 'EE', '2024-01-23'),
-(4, 'eeee', '$2a$10$U91DEdPAXi4LcbTeAMLWCOVC5MP5cEV9zQgFPsUQP90xLNVzhgkK.', '4個e', 'ee@gaj.com', 1, 'IU', 'OwO', '2024-01-24');
+(4, 'eeee', '$2a$10$U91DEdPAXi4LcbTeAMLWCOVC5MP5cEV9zQgFPsUQP90xLNVzhgkK.', '4個e', 'ee@gaj.com', 1, 'IU', 'OwO', '2024-01-24'),
+(5, 'user666', '$2a$10$CLEEhgDZKg3FWn4RdlP/6OKXqsRftiPrpX4pCMg6F9cjtUmwH6xY.', '噴火龍', 'user666@pokemon.com', 1, '寶可夢', '不是龍', '2024-01-28');
 
 --
 -- 已傾印資料表的索引
@@ -172,20 +187,21 @@ INSERT INTO `user` (`userid`, `username`, `password`, `name`, `email`, `gender`,
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`cartid`),
-  ADD KEY `userid` (`userid`);
+  ADD KEY `userid` (`userId`);
 
 --
--- 資料表索引 `cartItem`
+-- 資料表索引 `cartitem`
 --
-ALTER TABLE `cartItem`
+ALTER TABLE `cartitem`
   ADD PRIMARY KEY (`cartItemId`),
   ADD KEY `cartId` (`cartId`),
-  ADD KEY `productId` (`productId`);
+  ADD KEY `productId` (`productId`),
+  ADD KEY `userId` (`userId`);
 
 --
--- 資料表索引 `orderItem`
+-- 資料表索引 `orderitem`
 --
-ALTER TABLE `orderItem`
+ALTER TABLE `orderitem`
   ADD PRIMARY KEY (`orderItemId`),
   ADD KEY `orderId` (`orderId`),
   ADD KEY `productId` (`productId`);
@@ -227,15 +243,15 @@ ALTER TABLE `cart`
   MODIFY `cartid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `cartItem`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `cartitem`
 --
-ALTER TABLE `cartItem`
+ALTER TABLE `cartitem`
   MODIFY `cartItemId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `orderItem`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `orderitem`
 --
-ALTER TABLE `orderItem`
+ALTER TABLE `orderitem`
   MODIFY `orderItemId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -248,19 +264,19 @@ ALTER TABLE `orders`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `product`
 --
 ALTER TABLE `product`
-  MODIFY `productid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `productid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `shop`
 --
 ALTER TABLE `shop`
-  MODIFY `shopId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `shopId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user`
 --
 ALTER TABLE `user`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- 已傾印資料表的限制式
@@ -270,19 +286,21 @@ ALTER TABLE `user`
 -- 資料表的限制式 `cart`
 --
 ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`);
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`userid`);
 
 --
--- 資料表的限制式 `cartItem`
+-- 資料表的限制式 `cartitem`
 --
-ALTER TABLE `cartItem`
+ALTER TABLE `cartitem`
   ADD CONSTRAINT `cartitem_ibfk_1` FOREIGN KEY (`cartId`) REFERENCES `cart` (`cartid`),
-  ADD CONSTRAINT `cartitem_ibfk_2` FOREIGN KEY (`productId`) REFERENCES `product` (`productid`);
+  ADD CONSTRAINT `cartitem_ibfk_2` FOREIGN KEY (`productId`) REFERENCES `product` (`productid`),
+  ADD CONSTRAINT `cartitem_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `cart` (`userId`),
+  ADD CONSTRAINT `cartitem_ibfk_4` FOREIGN KEY (`userId`) REFERENCES `user` (`userid`);
 
 --
--- 資料表的限制式 `orderItem`
+-- 資料表的限制式 `orderitem`
 --
-ALTER TABLE `orderItem`
+ALTER TABLE `orderitem`
   ADD CONSTRAINT `orderitem_ibfk_1` FOREIGN KEY (`orderId`) REFERENCES `orders` (`orderId`),
   ADD CONSTRAINT `orderitem_ibfk_2` FOREIGN KEY (`productId`) REFERENCES `product` (`productid`);
 
