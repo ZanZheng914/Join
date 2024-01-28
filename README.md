@@ -4,6 +4,7 @@
 * Spring Boot
 * MySQL
 * Boostrap, CSS
+* JavaScript
 * Maven
 * Lombok
 * AOP & Log
