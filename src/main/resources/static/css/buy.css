@@ -37,7 +37,7 @@ body{
 .container-booking p{
     margin: -7px;
 }
-* check out */
+
 .checkout-container{
     position: fixed;
     right:0px;
@@ -47,7 +47,7 @@ body{
 }
 .table{
     width: 98%;
-    height: 300px;
+    max-height: 300px;
     overflow-y: scroll;
     border: 1px solid black;
     border-radius: 5px;
@@ -58,29 +58,34 @@ body{
   border-bottom: 1px dashed black;
 }
 .col1-name{
-    width:40% ;
+    width:30%;
     height: 100%;
     float: left;
 }
 .col2-price{
-    width:15% ;
+    width:10 ;
     height: 100%;
     float: left;
 }
 .col3-ice{
-    width:15% ;
+    width:15%;
     height: 100%;
-    float: left;
+    float: right;
 }
 .col4-sugar{
-    width:15% ;
+    width:15%;
     height: 100%;
-    float: left;
+    float: right;
 }
 .col5-quantity{
     width:15% ;
     height: 100%;
-    float: left;
+    float: right;
+}
+.col6-subTotal{
+    width:15% ;
+    height: 100%;
+    float: right;
 }
 .cart{
     background:rgba(255, 255, 255, 0.6);
@@ -145,6 +150,14 @@ body{
   .container-shop input{
     width: 40px;
   }
+  .save-cart-btn {
+  background: rgba(255, 255, 255, 0.6);
+  font-size: 20px;
+  border: 1px black solid;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px; 
+}
   
   .table, .cleancart {
     display: none;

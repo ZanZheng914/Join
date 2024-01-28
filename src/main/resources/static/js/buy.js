@@ -162,8 +162,6 @@ class ShoppingCart{
 	}
 	
 	addItem(productName,price,ice,sugar,quantity,productId){
-		console.log('AddItem:',productName,price,ice,sugar,quantity,productId)
-		
 		if(quantity>0){
 			const item ={
 				productName,price,ice,sugar,quantity,productId,
@@ -180,61 +178,66 @@ class ShoppingCart{
 		this.items=[];
 		this.updateCart();
 	}
-	updateCart(){
-		const cartTable = document.querySelector('.table');
-		  cartTable.innerHTML = ''; // 清空表格
-
-		  const header = `
-		    <div class="column">
-		      <div class="col1-name">品名</div>
-		      <div class="col2-price">價格</div>
-		      <div class="col3-ice">冰塊</div>
-		      <div class="col4-sugar">糖量</div>
-		      <div class="col5-quantity">數量</div>
-		      <div class="col6-subTotal">小計</div>
-		    </div>
-		  `;
-		  cartTable.insertAdjacentHTML('beforeend', header);
-		
-		let totalPrice = 0;
-		
-		  this.items.forEach(item => {
-			  const subTotal = item.price * item.quantity;
-			totalPrice +=subTotal;
-					  
-		    const column = `
-		      <div class="column">
-		        <div class="col1-name">${item.productName}</div>
-		        <div class="col2-price">${item.price}</div>
-		        <div class="col3-ice">${item.ice}</div>
-		        <div class="col4-sugar">${item.sugar}</div>
-		        <div class="col5-quantity">${item.quantity}</div>
-		        <div class="col6-subTotal">${subTotal.toFixed(0)}</div>
-		      </div>
-		    `;
-		    cartTable.insertAdjacentHTML('beforeend', column);
-		  });
-		
-		  // 更新total
-		  const totalItems = this.items.reduce((total, item) => total + item.quantity, 0);
-		  document.getElementById('count-item').textContent = totalItems + ' item';
-		  document.getElementById('total-price').textContent = totalPrice.toFixed(0);
-		
+	
+    saveCart(userId) {
+        axios.post('/save-cart', { userId, cartItems: this.items })
+            .then(response => {
+                console.log('購物車保存成功', response);
+            })
+            .catch(error => {
+                console.error('購物車保存失敗', error);
+            })
+    }
+	
+	updateCart() {
+	    const cartTable = document.querySelector('.table');
+	    cartTable.innerHTML = ''; // 清空表格
+	
+	    const tableHeader = `
+	        <div class="column">
+	            <div class="col1-name">品名</div>
+	            <div class="col2-price">價格</div>
+	            <div class="col3-ice">冰塊</div>
+	            <div class="col4-sugar">糖量</div>
+	            <div class="col5-quantity">數量</div>
+	            <div class="col6-subTotal">小計</div>
+	        </div>
+	    `;
+	    cartTable.insertAdjacentHTML('beforeend', tableHeader);
+	
+	    let totalPrice = 0;
+	
+	    this.items.forEach(item => {
+	        const subTotal = item.price * item.quantity;
+	        totalPrice += subTotal;
+	
+	        const column = `
+	            <div class="column">
+	                <div class="col1-name">${item.productName}</div>
+	                <div class="col2-price">${item.price}</div>
+	                <div class="col3-ice">${item.ice}</div>
+	                <div class="col4-sugar">${item.sugar}</div>
+	                <div class="col5-quantity">${item.quantity}</div>
+	                <div class="col6-subTotal">${subTotal.toFixed(0)}</div>
+	            </div>
+	        `;
+	        cartTable.insertAdjacentHTML('beforeend', column);
+	    });
+	
+	    // 更新total
+	    const totalItems = this.items.reduce((total, item) => total + item.quantity, 0);
+	    document.getElementById('count-item').textContent = totalItems + ' item';
+	    document.getElementById('total-price').textContent = totalPrice.toFixed(0);
 	}
-	
-	
 }
 
 const shoppingCart= new ShoppingCart();
 
-document.addEventListener('DOMContentLoaded',function(){
 
-document.querySelectorAll('.add-to-cart').forEach((button)=>{
-	button.addEventListener('click',function(event){
-		console.log('Button clicked');
+document.getElementById('productList').addEventListener('click', function(event) {
+    if (event.target.classList.contains('add-to-cart')) {
 
-	    const trElement = event.target.closest('tr');
-	    
+	    const trElement = event.target.closest('tr');   
 	    const productName = trElement.querySelector('[data-product-name]').getAttribute('data-product-name');
 	    const price = parseFloat(trElement.querySelector('[data-price]').getAttribute('data-price'));
 	    const ice = trElement.querySelector('.ice').value;
@@ -242,36 +245,19 @@ document.querySelectorAll('.add-to-cart').forEach((button)=>{
 	    const quantity = parseInt(trElement.querySelector('.quantity').value);
 	    const productId = parseInt(trElement.querySelector('[data-product-id]').getAttribute('data-product-id'));
 		
-		console.log('在購物車內呼叫:',productName, price, ice, sugar, quantity, productId);
-
-		
 		shoppingCart.addItem(productName,price,ice,sugar,quantity,productId);
 		
-/*		axios.post('/cartItem/add-to-cart',{
-			productName: productName,
-			price: price,
-			ice: ice,
-			sugar: sugar,
-			quantity: quantity,
-			productId: productId
-		})
-		.then(response=>{
-			console.log(response);
-		})
-		.catch(error=>{
-			console.log(error);
-		})
-		*/
-		})
+		}
 	})
 		document.getElementById('cleancart').addEventListener('click',function(){
 			console.log('Clearing Cart');
 			shoppingCart.clearCart();
 		})
-});
 
-
-
+	document.getElementById('save-cart').addEventListener('click',function(){
+		const userId = 1; //預設為1，後續再從JWT獲取
+		shoppingCart.saveCart(userId);
+	})
 
 	let CartVisible = false;
 	
