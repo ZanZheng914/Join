@@ -178,7 +178,7 @@ class ShoppingCart{
 		this.items=[];
 		this.updateCart();
 	}
-	
+	//處理資料送往後端部分
     saveCart(userId) {
         axios.post('/save-cart', { userId, cartItems: this.items })
             .then(response => {
