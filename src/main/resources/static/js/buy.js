@@ -62,6 +62,7 @@
     	const menuImageUrls={
 		    '八曜和茶台中精誠門市': 'https://8yotea.com/wp-content/uploads/2023/12/ZZ06.jpg',
 		    '一沐日台中大墩店': 'https://kohi.tw/wp-content/uploads/2024/01/%E4%B8%80%E6%B2%90%E6%97%A5%E5%AE%98%E6%96%B9%E8%8F%9C%E5%96%AE2024%E6%9C%80%E6%96%B0%E5%85%AB%E6%9B%9C%E8%81%AF%E5%90%8D.jpeg',
+		    '星巴克向心門市': 'https://www.goldentulip-aesthetics.com.tw/wp-content/uploads/2021/12/2022_levino_-1-768x1086.jpg',
 		}
     	
     	async function updateShopInfo(shopId) {
