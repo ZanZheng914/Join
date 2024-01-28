@@ -62,7 +62,7 @@
           <option id="deliverydayAfterTomorrow" value="dayAfterTomorrow">後天</option>
         </select>  
       </div>
-      <div class="col-2">
+      <div class="col-4">
         揪團店家：&#20;
         <select id="shopSelect" onchange="updateShopInfo(this.value)"></select>
       </div>
@@ -78,7 +78,7 @@
   </div>  
 
 <!-- 商品區 -->
-<div class="container-shop" style="margin-top: 10px;">
+<div class="container-shop" style="margin-top: 10px;text-align: center;">
   <div class="row">
      <div class="col-9">
         <table class="tableSection">
@@ -113,13 +113,16 @@
     <!-- Cart Items產生在table內 -->
   </div>
   
-  <div>
+  <div class="buttons-container">
     <a class="cart" title="Your Cart" id="cart">
       <img src="../images/cart.png" style="width: 50px;height: 50px;cursor: pointer;"/>
       <span class="empty" id="count-item" data-count="0">0 item</span>
     </a>
     <button class="save-cart-btn" id="save-cart">保存購物車</button>
-    <div class="cleancart remove"><span>清除購物車</span><img id="cleancart" src="../images/delete.png" style="width: 45px;cursor: pointer;"></div>
+    <button class="cleancart-btn" id="cleancart">
+      <span>清除購物車</span>
+      <img src="../images/delete.png" style="width: 45px;cursor: pointer;">
+    </button>
   </div>
   <div class="total">
     <div class="total-text">Total：</div>

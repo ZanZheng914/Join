@@ -19,7 +19,6 @@ body{
     margin-bottom: 10px;
 }
 .container-booking .col-4,
-.container-booking .col-2,
 .container-booking .col-6{
     font-size: large;
     padding: 5px;
@@ -40,8 +39,8 @@ body{
 
 .checkout-container{
     position: fixed;
+    top: 50%;
     right:0px;
-    bottom: 20px;
     text-align: center;
     z-index: 10;
 }
@@ -95,14 +94,23 @@ body{
     border: 1px black solid;
     border-radius: 5px;
 }
-.cleancart{
-  background:rgba(255, 255, 255, 0.6);
+.buttons-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+.cleancart-btn {
+  background: rgba(255, 255, 255, 0.6);
   font-size: 20px;
-  justify-content: left;
-  display: block;
   border: 1px black solid;
   border-radius: 5px;
-  margin: 5px 0px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.cleancart-btn span {
+  margin-right: 5px;
 }
 
   .total{
@@ -141,15 +149,22 @@ body{
 
   .container-shop .col-9{
 	background-color: rgba(255, 255, 255, 0.8);
-    display: flex;
-    justify-content: center;
     align-items: center;
-	
+    font-size:20px;
+        display: flex;
+    justify-content: center;
+  }
+  .container-shop .col-10 {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  }
-  .container-shop input{
-    width: 40px;
-  }
+.container-shop img {
+  width: 100%; 
+}
+
   .save-cart-btn {
   background: rgba(255, 255, 255, 0.6);
   font-size: 20px;
