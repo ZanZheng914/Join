@@ -6,6 +6,7 @@
     				if(xhr.status === 200){
     					var userData = JSON.parse(xhr.responseText);
     					updateUserInfo(userData);
+    					updateUserOption(userData);
     				}else{
     					console.log("讀取資料失敗:",xhr.statusText);
     				}
@@ -180,7 +181,20 @@ class ShoppingCart{
 	}
 	//處理資料送往後端部分
     saveCart(userId) {
-        axios.post('/save-cart', { userId, cartItems: this.items })
+		const cartItems = this.items.map(item=>{
+			return{
+				userId,
+				cartId: 1,
+				productId: item.productId,
+				quantity: item.quantity,
+				price: item.price,
+				subTotal: tiem.total,
+				ice: item.ice,
+				sugar: item.sugar,
+			}
+		})
+		
+        axios.post('/cartItem/saveCart', cartItems)
             .then(response => {
                 console.log('購物車保存成功', response);
             })
@@ -254,8 +268,8 @@ document.getElementById('productList').addEventListener('click', function(event)
 			shoppingCart.clearCart();
 		})
 
-	document.getElementById('save-cart').addEventListener('click',function(){
-		const userId = 1; //預設為1，後續再從JWT獲取
+	document.getElementById('saveCart').addEventListener('click',function(){
+		const userId = 5; //預設為5，後續再從JWT獲取
 		shoppingCart.saveCart(userId);
 	})
 
@@ -263,16 +277,14 @@ document.getElementById('productList').addEventListener('click', function(event)
 	
 document.getElementById('cart').addEventListener('click',function(){
     const cartTable = document.querySelector('.table');
-    const cleancart = document.querySelector('.cleancart');
+
     const checkout = document.querySelector('.checkout');
 
     if(CartVisible){
         cartTable.style.display = 'none';
-        cleancart.style.display = 'none';
         checkout.style.display = 'none';
     }else{
         cartTable.style.display = 'block';
-        cleancart.style.display = 'block';
         checkout.style.display = 'block';
     }
     CartVisible = !CartVisible;

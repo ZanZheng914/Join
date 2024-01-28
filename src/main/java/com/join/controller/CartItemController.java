@@ -1,5 +1,7 @@
 package com.join.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,10 +29,9 @@ public class CartItemController {
 	public CartItem getCartItemById(@PathVariable Integer cartItemId) {
 		return cartItemService.getCartItemById(cartItemId);
 	}
-	@PostMapping("/add-to-cart")
-	public void addToCart(@RequestBody CartItem cartItem) {
-		System.out.println("收到add to cart請求:"+ cartItem);
-		cartItemService.insertCartItem(cartItem);
+	@PostMapping("/saveCart")
+	public void saveCart(@RequestBody List<CartItem> cartItem) {
+		cartItemService.saveCart(cartItem);
 	}
 	@PutMapping("/update")
 	public void updateCartItem(@RequestBody CartItem cartItem) {

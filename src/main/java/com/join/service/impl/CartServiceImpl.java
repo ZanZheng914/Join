@@ -47,7 +47,7 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public void addToCart(CartItem cartItem) {
+	public void saveCart(CartItem cartItem) {
 		cartItemMapper.insertCartItem(cartItem);
 	}
 

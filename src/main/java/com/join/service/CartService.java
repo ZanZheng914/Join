@@ -16,5 +16,5 @@ public interface CartService {
 	
 	public Integer getTotalPrice(Integer cartId);
 
-	public void addToCart(CartItem cartItem);
+	public void saveCart(CartItem cartItem);
 }

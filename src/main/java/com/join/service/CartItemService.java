@@ -1,5 +1,7 @@
 package com.join.service;
 
+import java.util.List;
+
 import com.join.pojo.CartItem;
 
 public interface CartItemService {
@@ -12,7 +14,7 @@ public interface CartItemService {
 
     void deleteCartItem(Integer cartItemId);
 
-	void addToCart(CartItem cartItem);
+	void saveCart(List<CartItem> cartItem);
 	
     CartItem getCartItemByProductIdAndUserId(Integer productId, Integer userId);
 	

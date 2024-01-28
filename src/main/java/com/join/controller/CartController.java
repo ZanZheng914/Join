@@ -28,9 +28,9 @@ public class CartController {
 	public Cart getCartById(@PathVariable Integer cartId) {
 		return cartService.getCartbyId(cartId);
 	}
-	@PostMapping("/add-to-cart")
-	public void addToCart(@RequestBody CartItem cartItem) {
-		cartService.addToCart(cartItem);
+	@PostMapping("/saveCart")
+	public void saveCart(@RequestBody CartItem cartItem) {
+		cartService.saveCart(cartItem);
 	}
 	@PutMapping("/update")
 	public void updateCart(@RequestBody Cart cart) {

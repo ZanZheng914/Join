@@ -1,6 +1,8 @@
 package com.join.service.impl;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +40,8 @@ public class CartItemServiceImpl implements CartItemService{
 		cartItemMapper.deleteCartItem(cartItemId);
 	}
 	@Override
-	public void addToCart(CartItem cartItem) {
+	public void saveCart(List<CartItem> cartItems) {
+		for (CartItem cartItem : cartItems) {
 		//如果user已經有cart item時，只需要更新數量等內容
 	    CartItem existingCartItem = getCartItemByProductIdAndUserId(cartItem.getProductId(), cartItem.getUserId());
 	    if(existingCartItem != null) {
@@ -49,7 +52,7 @@ public class CartItemServiceImpl implements CartItemService{
 	        insertCartItem(cartItem);
 	    }
 	}
-
+	}
 	@Override
 	public CartItem getCartItemByProductIdAndUserId(Integer productId, Integer userId) {
         return cartItemMapper.getCartItemByProductIdAndUserId(productId,userId);
