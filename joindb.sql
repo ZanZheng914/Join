@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost:8889
--- 產生時間： 2024-01-28 14:09:12
--- 伺服器版本： 5.7.24
--- PHP 版本： 8.0.1
+-- 產生時間： 2024 年 01 月 29 日 04:19
+-- 伺服器版本： 5.7.39
+-- PHP 版本： 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫: `joindb`
+-- 資料庫： `joindb`
 --
 
 -- --------------------------------------------------------
@@ -28,11 +28,18 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cart` (
-  `cartid` int(11) NOT NULL,
+  `cartId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `totalPrice` int(11) NOT NULL,
   `createTime` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 傾印資料表的資料 `cart`
+--
+
+INSERT INTO `cart` (`cartId`, `userId`, `totalPrice`, `createTime`) VALUES
+(1, 5, 105, '2024-01-29');
 
 -- --------------------------------------------------------
 
@@ -43,12 +50,22 @@ CREATE TABLE `cart` (
 CREATE TABLE `cartitem` (
   `cartItemId` int(11) NOT NULL,
   `cartId` int(11) NOT NULL,
-  `userId` int(11) NOT NULL,
+  `userId` int(11) NOT NULL DEFAULT '5',
   `productId` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL,
-  `subTotal` int(11) NOT NULL
+  `subTotal` int(11) NOT NULL,
+  `ice` varchar(20) NOT NULL,
+  `sugar` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 傾印資料表的資料 `cartitem`
+--
+
+INSERT INTO `cartitem` (`cartItemId`, `cartId`, `userId`, `productId`, `quantity`, `price`, `subTotal`, `ice`, `sugar`) VALUES
+(4, 1, 5, 11, 3, 35, 105, '少冰', '少糖'),
+(5, 1, 5, 9, 2, 35, 70, '少冰', '無糖');
 
 -- --------------------------------------------------------
 
@@ -186,7 +203,7 @@ INSERT INTO `user` (`userid`, `username`, `password`, `name`, `email`, `gender`,
 -- 資料表索引 `cart`
 --
 ALTER TABLE `cart`
-  ADD PRIMARY KEY (`cartid`),
+  ADD PRIMARY KEY (`cartId`),
   ADD KEY `userid` (`userId`);
 
 --
@@ -240,13 +257,13 @@ ALTER TABLE `user`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `cartitem`
 --
 ALTER TABLE `cartitem`
-  MODIFY `cartItemId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cartItemId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `orderitem`
@@ -292,7 +309,7 @@ ALTER TABLE `cart`
 -- 資料表的限制式 `cartitem`
 --
 ALTER TABLE `cartitem`
-  ADD CONSTRAINT `cartitem_ibfk_1` FOREIGN KEY (`cartId`) REFERENCES `cart` (`cartid`),
+  ADD CONSTRAINT `cartitem_ibfk_1` FOREIGN KEY (`cartId`) REFERENCES `cart` (`cartId`),
   ADD CONSTRAINT `cartitem_ibfk_2` FOREIGN KEY (`productId`) REFERENCES `product` (`productid`),
   ADD CONSTRAINT `cartitem_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `cart` (`userId`),
   ADD CONSTRAINT `cartitem_ibfk_4` FOREIGN KEY (`userId`) REFERENCES `user` (`userid`);
