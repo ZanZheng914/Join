@@ -30,6 +30,13 @@
 		VALUES (#{cartId},#{productId},#{quantity},#{price},#{subTotal},#{ice},#{sugar})
 	</insert>
 	
+	<insert id="saveCartItems" parameterType="java.util.List">
+    <foreach collection="cartItems" item="item" separator=";">
+        INSERT INTO cartItem (cartId,productId,quantity,price,subTotal,ice,sugar)
+        VALUES (#{item.cartId},#{item.productId},#{item.quantity},#{item.price},#{item.subTotal},#{item.ice},#{item.sugar})
+    </foreach>
+</insert>
+	
 	<select id="getCartItemByProductIdAndUserId" parameterType="com.join.pojo.CartItem" resultMap="cartItemIdResultMap">
 	    SELECT * FROM cartItem
 	    WHERE productId=#{productId}

@@ -1,6 +1,7 @@
 package com.join.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,8 +31,9 @@ public class CartItemController {
 		return cartItemService.getCartItemById(cartItemId);
 	}
 	@PostMapping("/saveCart")
-	public void saveCart(@RequestBody List<CartItem> cartItem) {
-		cartItemService.saveCart(cartItem);
+	public void saveCart(@RequestBody Map<String ,List<CartItem>> cartItemsMap) {
+        List<CartItem> cartItems = cartItemsMap.get("cartItems");
+        cartItemService.saveCart(cartItems);
 	}
 	@PutMapping("/update")
 	public void updateCartItem(@RequestBody CartItem cartItem) {

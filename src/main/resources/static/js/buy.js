@@ -180,22 +180,22 @@ class ShoppingCart{
 		this.items=[];
 		this.updateCart();
 	}
-	//處理資料送往後端部分
+	//處理資料送往後端部分,預設userId與cartId為固定值
     saveCart(userId) {
 		const cartItems = this.items.map(item=>{
 			return{
-				userId,
+				userId: 5,
 				cartId: 1,
 				productId: item.productId,
 				quantity: item.quantity,
 				price: item.price,
-				subTotal: tiem.total,
+				subTotal: item.total,
 				ice: item.ice,
 				sugar: item.sugar,
 			}
 		})
 		
-        axios.post('/cartItem/saveCart', cartItems)
+        axios.post('/cartItem/saveCart', {cartItems})
             .then(response => {
                 console.log('購物車保存成功', response);
             })
