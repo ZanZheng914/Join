@@ -1,4 +1,6 @@
-前端由JavaScript & Bootstrap寫成，後端利用JAVA SpringBoot完成，完成前後端串接。
+JOIN揪飲目標是建立一個公司用飲料團購網站，為增加辦公室訂購下午茶的效率，<br>
+一個主發起人開團決定時間與店家，同事可選擇跟團並點餐。<br>
+前端由JavaScript & Bootstrap寫成，後端利用JAVA SpringBoot完成，完成前後端串接。<br>
 
 # Used Technologies:
 * Spring Boot
